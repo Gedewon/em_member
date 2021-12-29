@@ -1,0 +1,251 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "IM.#####",
+ "creation": "2021-12-29 04:44:34.168975",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "full_name",
+  "date_of_birth",
+  "geder",
+  "picture",
+  "prefix",
+  "titleoptional",
+  "phone_number",
+  "email",
+  "additional_contact_section",
+  "name_2",
+  "title_2",
+  "phone_2",
+  "email_2",
+  "section_break_14",
+  "profession_specialization",
+  "educational_credentials",
+  "graduated_from_section",
+  "institution",
+  "column_break_19",
+  "undergrade_contactuate",
+  "column_break_21",
+  "year_of_completion",
+  "section_break_23",
+  "place_of_employmentinstitution",
+  "unemployedseeking_employment",
+  "unemployednot_seeking_employment",
+  "membership_id",
+  "membership_type",
+  "membership_fee_amount",
+  "generate_payment_reference",
+  "membership_card",
+  "i_need_sms_notification",
+  "member_status",
+  "organization"
+ ],
+ "fields": [
+  {
+   "fieldname": "full_name",
+   "fieldtype": "Data",
+   "label": "Full Name"
+  },
+  {
+   "fieldname": "date_of_birth",
+   "fieldtype": "Date",
+   "label": "Date of Birth"
+  },
+  {
+   "fieldname": "geder",
+   "fieldtype": "Select",
+   "label": "Geder",
+   "options": "Male\nFemale"
+  },
+  {
+   "fieldname": "picture",
+   "fieldtype": "Attach Image",
+   "label": "Picture"
+  },
+  {
+   "fieldname": "prefix",
+   "fieldtype": "Select",
+   "label": "Prefix",
+   "options": "Dr\nProf\nMr\nMrs\nMs"
+  },
+  {
+   "fieldname": "titleoptional",
+   "fieldtype": "Select",
+   "label": "Title(Optional)",
+   "options": "MD\nMPH\nPHD\nMSC\nothers"
+  },
+  {
+   "fieldname": "phone_number",
+   "fieldtype": "Int",
+   "label": "Phone Number "
+  },
+  {
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "label": "Email"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "additional_contact_section",
+   "fieldtype": "Section Break",
+   "label": "Additional Contact"
+  },
+  {
+   "fieldname": "name_2",
+   "fieldtype": "Data",
+   "label": "Full Name"
+  },
+  {
+   "fieldname": "title_2",
+   "fieldtype": "Select",
+   "label": "Title(Optional)",
+   "options": "MD\nMPH\nPHD\nMSC\nothers"
+  },
+  {
+   "fieldname": "phone_2",
+   "fieldtype": "Int",
+   "label": "Phone Number"
+  },
+  {
+   "fieldname": "email_2",
+   "fieldtype": "Data",
+   "label": "Email"
+  },
+  {
+   "fieldname": "section_break_14",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "profession_specialization",
+   "fieldtype": "Text",
+   "label": "Profession (Specialization)"
+  },
+  {
+   "fieldname": "educational_credentials",
+   "fieldtype": "Attach Image",
+   "label": "Educational Credentials"
+  },
+  {
+   "fieldname": "graduated_from_section",
+   "fieldtype": "Section Break",
+   "label": "Graduated from"
+  },
+  {
+   "fieldname": "institution",
+   "fieldtype": "Data",
+   "label": "Institution "
+  },
+  {
+   "fieldname": "column_break_19",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "undergrade_contactuate",
+   "fieldtype": "Data",
+   "label": "Undergrade Contactuate "
+  },
+  {
+   "fieldname": "column_break_21",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "year_of_completion",
+   "fieldtype": "Int",
+   "label": "Year of completion"
+  },
+  {
+   "fieldname": "section_break_23",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "place_of_employmentinstitution",
+   "fieldtype": "Data",
+   "label": "Place of Employment/Institution"
+  },
+  {
+   "default": "0",
+   "fieldname": "unemployedseeking_employment",
+   "fieldtype": "Check",
+   "label": "Unemployed(seeking employment)"
+  },
+  {
+   "default": "0",
+   "fieldname": "unemployednot_seeking_employment",
+   "fieldtype": "Check",
+   "label": "Unemployed(not seeking employment)"
+  },
+  {
+   "fieldname": "membership_id",
+   "fieldtype": "Image",
+   "label": "Membership ID "
+  },
+  {
+   "fieldname": "membership_type",
+   "fieldtype": "Select",
+   "label": "Membership type",
+   "options": "Regular\nCorporate\nAssociate\nJunior(Medical Students)\nHonorable\nNEDD\nLifetime\nJDN"
+  },
+  {
+   "fieldname": "membership_fee_amount",
+   "fieldtype": "Data",
+   "label": "Membership fee amount"
+  },
+  {
+   "fieldname": "generate_payment_reference",
+   "fieldtype": "Data",
+   "label": "Generate payment reference "
+  },
+  {
+   "fieldname": "membership_card",
+   "fieldtype": "Image",
+   "label": "Membership card"
+  },
+  {
+   "default": "0",
+   "fieldname": "i_need_sms_notification",
+   "fieldtype": "Check",
+   "label": "I need SMS notification "
+  },
+  {
+   "fieldname": "member_status",
+   "fieldtype": "Select",
+   "label": "Member Status",
+   "options": "Active\nInactive"
+  },
+  {
+   "fieldname": "organization",
+   "fieldtype": "Link",
+   "label": "Organization",
+   "options": "Organization"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2021-12-29 05:29:43.061259",
+ "modified_by": "Administrator",
+ "module": "Em Member",
+ "name": "Member",
+ "naming_rule": "Expression (old style)",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

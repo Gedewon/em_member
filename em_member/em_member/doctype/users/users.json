@@ -1,0 +1,98 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "User.#####",
+ "creation": "2021-12-29 05:44:20.229236",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "full_name",
+  "date_of_birth",
+  "gender",
+  "prefix",
+  "phone_number",
+  "email",
+  "assigned_branch",
+  "user_role",
+  "user_id_card"
+ ],
+ "fields": [
+  {
+   "fieldname": "full_name",
+   "fieldtype": "Data",
+   "label": "Full Name"
+  },
+  {
+   "fieldname": "date_of_birth",
+   "fieldtype": "Date",
+   "label": "Date of Birth"
+  },
+  {
+   "fieldname": "gender",
+   "fieldtype": "Select",
+   "label": "Gender",
+   "options": "Male\nFemale"
+  },
+  {
+   "fieldname": "prefix",
+   "fieldtype": "Select",
+   "label": "Prefix",
+   "options": "Dr\nProf\nMr\nMrs\nMs"
+  },
+  {
+   "fieldname": "phone_number",
+   "fieldtype": "Int",
+   "label": "Phone number"
+  },
+  {
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "label": "Email"
+  },
+  {
+   "fieldname": "assigned_branch",
+   "fieldtype": "Link",
+   "label": "Assigned branch",
+   "options": "Branch"
+  },
+  {
+   "fieldname": "user_role",
+   "fieldtype": "Select",
+   "label": "User role",
+   "options": "Head office admin\nBranch admin"
+  },
+  {
+   "fieldname": "user_id_card",
+   "fieldtype": "Image",
+   "label": "User ID card "
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2021-12-29 05:47:06.166654",
+ "modified_by": "Administrator",
+ "module": "Em Member",
+ "name": "Users",
+ "naming_rule": "Expression (old style)",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}
