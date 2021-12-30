@@ -9,6 +9,7 @@
  "amount": 0.0,
  "amount_based_on_field": 0,
  "apply_document_permissions": 0,
+ "breadcrumbs": "",
  "button_label": "Save",
  "creation": "2021-12-29 06:26:36.498901",
  "doc_type": "Member",
@@ -19,7 +20,7 @@
  "is_standard": 1,
  "login_required": 1,
  "max_attachment_size": 0,
- "modified": "2021-12-29 06:29:57.499404",
+ "modified": "2021-12-30 11:57:28.074301",
  "modified_by": "Administrator",
  "module": "Em Member",
  "name": "new-member",
@@ -41,8 +42,24 @@
    "enabled": 0,
    "route": "/about",
    "title": "About"
+  },
+  {
+   "enabled": 0,
+   "route": "/payment",
+   "title": "Payment"
+  },
+  {
+   "enabled": 0,
+   "route": "/certification",
+   "title": "certification"
+  },
+  {
+   "enabled": 0,
+   "route": "/events",
+   "title": "Events"
   }
  ],
+ "success_message": "Profile update sucessfully ",
  "success_url": "/new-member-",
  "title": "New Member ",
  "web_form_fields": [

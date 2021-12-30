@@ -2,26 +2,30 @@
 # For license information, please see license.txt
 
 # import frappe
+from frappe.email.doctype.email_group.email_group import add_subscribers
 from frappe.model.document import Document
 import frappe
 class Member(Document):
-	def before_save(self):
-		# before_insert do
-		# check the type of membership field choosen 
-		# add to specific group and to the group ALL
-		# add_subsrcibers(name,email_list)
-		# name -> type of emailgroup
-		# email_list -> have to be array(list,tuple)
-		# membership_type = self.membership_type
-		# email = self.email
-		# abc = frappe.get_doc('Email group',membership_type)
-		# # how do we consume a whitelist functions
-		# add_subscribers("ALL",email)
-		# frappe.email_group.add_subscribers(membership_type,email)
-		# print("--------------------------")
+	# def before_save(self):
+	# 	# 1.after registoring new member 
+	# # 2. add to all email group
+	# # 3. add to membership specfic group
+	def after_insert(self):
+		email_address = self.email
 
-		print(self)
-		print(self.membership_type)
-		print(self.email)
-		print("--------------------------")
+		# add to the public group
+		add_subscribers('ALL',email_address)
 
+		# add to it's specific group 
+		membership_type = self.membership_type
+		email_group = frappe.get_doc('Email Group',membership_type)
+		
+		# try calling the add_sub method 
+		
+		add_subscribers(membership_type,email_address)
+		email_group.update_total_subscribers()
+
+		print(email_group)
+
+
+	
