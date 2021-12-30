@@ -5,4 +5,11 @@
 from frappe.model.document import Document
 
 class Member(Document):
-	pass
+	def before_save(self):
+		print("--------------------------")
+
+		print(self)
+		print(self.membership_type)
+		print(self.email)
+		print("--------------------------")
+
