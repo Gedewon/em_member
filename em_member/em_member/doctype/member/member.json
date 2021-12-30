@@ -130,8 +130,9 @@
   },
   {
    "fieldname": "educational_credentials",
-   "fieldtype": "Attach Image",
-   "label": "Educational Credentials"
+   "fieldtype": "Table",
+   "label": "Educational Credentials",
+   "options": "Educational Credentials"
   },
   {
    "fieldname": "graduated_from_section",
@@ -229,7 +230,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-12-30 10:34:21.118430",
+ "modified": "2021-12-30 11:30:57.793302",
  "modified_by": "Administrator",
  "module": "Em Member",
  "name": "Member",
