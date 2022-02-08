@@ -61,7 +61,7 @@
    "fieldname": "geder",
    "fieldtype": "Select",
    "in_list_view": 1,
-   "label": "Geder",
+   "label": "Gender",
    "options": "Male\nFemale",
    "reqd": 1
   },
@@ -90,7 +90,8 @@
   {
    "fieldname": "email",
    "fieldtype": "Data",
-   "label": "Email"
+   "label": "Email",
+   "reqd": 1
   },
   {
    "collapsible": 1,
@@ -197,7 +198,8 @@
   {
    "fieldname": "membership_fee_amount",
    "fieldtype": "Data",
-   "label": "Membership fee amount"
+   "label": "Membership fee amount",
+   "read_only": 1
   },
   {
    "fieldname": "generate_payment_reference",
@@ -230,7 +232,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-12-30 20:05:46.883728",
+ "modified": "2022-02-08 14:15:12.934782",
  "modified_by": "Administrator",
  "module": "Em Member",
  "name": "Member",
