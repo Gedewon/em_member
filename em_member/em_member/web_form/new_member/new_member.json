@@ -11,7 +11,7 @@
  "apply_document_permissions": 0,
  "breadcrumbs": "",
  "button_label": "Save",
- "client_script": "\ndocument.querySelector(\"a.text-muted \").innerText = \"360Ground(Eldx Technology)\"\n",
+ "client_script": "",
  "creation": "2021-12-29 06:26:36.498901",
  "doc_type": "Member",
  "docstatus": 0,
@@ -21,7 +21,7 @@
  "is_standard": 1,
  "login_required": 1,
  "max_attachment_size": 0,
- "modified": "2021-12-30 14:55:12.202713",
+ "modified": "2021-12-30 20:15:25.090623",
  "modified_by": "Administrator",
  "module": "Em Member",
  "name": "new-member",
@@ -66,6 +66,32 @@
  "web_form_fields": [
   {
    "allow_read_on_all_link_options": 0,
+   "fieldname": "prefix",
+   "fieldtype": "Select",
+   "hidden": 0,
+   "label": "Prefix",
+   "max_length": 0,
+   "max_value": 0,
+   "options": "Dr\nProf\nMr\nMrs\nMs",
+   "read_only": 0,
+   "reqd": 1,
+   "show_in_filter": 0
+  },
+  {
+   "allow_read_on_all_link_options": 0,
+   "fieldname": "titleoptional",
+   "fieldtype": "Select",
+   "hidden": 0,
+   "label": "Title(Optional)",
+   "max_length": 0,
+   "max_value": 0,
+   "options": "MD\nMPH\nPHD\nMSC\nothers",
+   "read_only": 0,
+   "reqd": 0,
+   "show_in_filter": 0
+  },
+  {
+   "allow_read_on_all_link_options": 0,
    "fieldname": "full_name",
    "fieldtype": "Data",
    "hidden": 0,
@@ -73,7 +99,7 @@
    "max_length": 0,
    "max_value": 0,
    "read_only": 0,
-   "reqd": 0,
+   "reqd": 1,
    "show_in_filter": 0
   },
   {
@@ -85,7 +111,7 @@
    "max_length": 0,
    "max_value": 0,
    "read_only": 0,
-   "reqd": 0,
+   "reqd": 1,
    "show_in_filter": 0
   },
   {
@@ -98,7 +124,7 @@
    "max_value": 0,
    "options": "Male\nFemale",
    "read_only": 0,
-   "reqd": 0,
+   "reqd": 1,
    "show_in_filter": 0
   },
   {
@@ -109,32 +135,6 @@
    "label": "Picture",
    "max_length": 0,
    "max_value": 0,
-   "read_only": 0,
-   "reqd": 0,
-   "show_in_filter": 0
-  },
-  {
-   "allow_read_on_all_link_options": 0,
-   "fieldname": "prefix",
-   "fieldtype": "Select",
-   "hidden": 0,
-   "label": "Prefix",
-   "max_length": 0,
-   "max_value": 0,
-   "options": "Dr\nProf\nMr\nMrs\nMs",
-   "read_only": 0,
-   "reqd": 0,
-   "show_in_filter": 0
-  },
-  {
-   "allow_read_on_all_link_options": 0,
-   "fieldname": "titleoptional",
-   "fieldtype": "Select",
-   "hidden": 0,
-   "label": "Title(Optional)",
-   "max_length": 0,
-   "max_value": 0,
-   "options": "MD\nMPH\nPHD\nMSC\nothers",
    "read_only": 0,
    "reqd": 0,
    "show_in_filter": 0
@@ -160,7 +160,7 @@
    "max_length": 0,
    "max_value": 0,
    "read_only": 0,
-   "reqd": 0,
+   "reqd": 1,
    "show_in_filter": 0
   },
   {
@@ -250,11 +250,12 @@
   {
    "allow_read_on_all_link_options": 0,
    "fieldname": "educational_credentials",
-   "fieldtype": "Attach Image",
+   "fieldtype": "Table",
    "hidden": 0,
    "label": "Educational Credentials",
    "max_length": 0,
    "max_value": 0,
+   "options": "Educational Credentials",
    "read_only": 0,
    "reqd": 0,
    "show_in_filter": 0
