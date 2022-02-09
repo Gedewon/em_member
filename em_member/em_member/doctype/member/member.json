@@ -36,6 +36,7 @@
   "membership_id",
   "membership_type",
   "membership_fee_amount",
+  "pay",
   "generate_payment_reference",
   "membership_card",
   "i_need_sms_notification",
@@ -218,21 +219,27 @@
    "label": "I need SMS notification "
   },
   {
+   "default": "Inactive",
    "fieldname": "member_status",
-   "fieldtype": "Select",
+   "fieldtype": "Data",
    "label": "Member Status",
-   "options": "Active\nInactive"
+   "read_only": 1
   },
   {
    "fieldname": "organization",
    "fieldtype": "Link",
    "label": "Organization",
    "options": "Organization"
+  },
+  {
+   "fieldname": "pay",
+   "fieldtype": "Button",
+   "label": "Pay with MedaPy"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-02-08 14:15:12.934782",
+ "modified": "2022-02-09 11:52:23.998749",
  "modified_by": "Administrator",
  "module": "Em Member",
  "name": "Member",
