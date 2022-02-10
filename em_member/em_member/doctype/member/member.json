@@ -86,7 +86,8 @@
   {
    "fieldname": "phone_number",
    "fieldtype": "Int",
-   "label": "Phone Number "
+   "label": "Phone Number ",
+   "reqd": 1
   },
   {
    "fieldname": "email",
@@ -205,7 +206,8 @@
   {
    "fieldname": "generate_payment_reference",
    "fieldtype": "Data",
-   "label": "Generate payment reference "
+   "label": "Generate payment reference ",
+   "read_only": 1
   },
   {
    "fieldname": "membership_card",
@@ -239,7 +241,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-02-09 11:52:23.998749",
+ "modified": "2022-02-10 08:35:34.251245",
  "modified_by": "Administrator",
  "module": "Em Member",
  "name": "Member",
