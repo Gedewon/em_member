@@ -19,9 +19,9 @@
  "idx": 0,
  "introduction_text": "<div class=\"ql-editor read-mode\"><p><strong><em>If you are a new member please fill each field with your accurate data. This is the data we are going to use for your personal detail</em></strong></p></div>",
  "is_standard": 1,
- "login_required": 1,
+ "login_required": 0,
  "max_attachment_size": 0,
- "modified": "2021-12-30 20:15:25.090623",
+ "modified": "2022-02-14 12:40:28.716953",
  "modified_by": "Administrator",
  "module": "Em Member",
  "name": "new-member",
@@ -35,29 +35,35 @@
  "show_sidebar": 1,
  "sidebar_items": [
   {
-   "enabled": 1,
-   "route": "/contact",
-   "title": "contact us"
-  },
-  {
    "enabled": 0,
-   "route": "/about",
-   "title": "About"
+   "route": "/status",
+   "title": "Membership Status "
   },
   {
    "enabled": 0,
    "route": "/payment",
-   "title": "Payment"
+   "title": "Payment History"
   },
   {
    "enabled": 0,
    "route": "/certification",
-   "title": "certification"
+   "title": "Certification "
   },
   {
    "enabled": 0,
-   "route": "/events",
-   "title": "Events"
+   "route": "/membersip_id",
+   "title": "Membership ID"
+  },
+  {
+   "enabled": 0,
+   "route": "/notification",
+   "title": "Notification"
+  },
+  {
+   "enabled": 0,
+   "reference_doctype": "User",
+   "route": "/profile",
+   "title": "Profile"
   }
  ],
  "success_message": "Profile update sucessfully ",
@@ -451,6 +457,16 @@
    "max_length": 0,
    "max_value": 0,
    "options": "Organization",
+   "read_only": 0,
+   "reqd": 0,
+   "show_in_filter": 0
+  },
+  {
+   "allow_read_on_all_link_options": 0,
+   "fieldtype": "Link",
+   "hidden": 0,
+   "max_length": 0,
+   "max_value": 0,
    "read_only": 0,
    "reqd": 0,
    "show_in_filter": 0

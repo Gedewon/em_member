@@ -1,0 +1,266 @@
+{% extends 'templates/landingpage_base.html'%}
+
+
+
+{% block content %}
+<main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>Membership Profile </h2>
+          <ol>
+            <li><a href="index.html">Home</a></li>
+            <li>Membership Profile</li>
+          </ol>
+        </div>
+        
+      </div>
+    </section><!-- End Breadcrumbs -->
+
+    <!-- ======= Portfolio Details Section ======= -->
+    <section id="portfolio-details" class="portfolio-details">
+      <div class="container">
+
+        <div class="row gy-4">
+
+          <div class="col-lg-8">
+            <div class="portfolio-details-slider swiper">
+              <!-- here came the custom webform  -->
+              <form>
+               
+                <div class="form-group">
+                  <label for="prefixSelector">Prefix</label>
+                  <select class="form-control" id="prefixSelector">
+                    <option>MD</option>
+                    <option>MPH</option>
+                    <option>PHD</option>
+                    <option>MSC</option>
+                    <option>others</option>
+                    
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="titleSelector">Title(Optional)</label>
+                  <select class="form-control" id="titleSelector">
+                    <option>Dr</option>
+                    <option>Prof</option>
+                    <option>Mr</option>
+                    <option>Mrs</option>
+                    <option>Ms</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="full_name">FullName</label>
+                <input class="form-control" id="full_name" type="text" placeholder="FullName">
+               </div>
+               
+                <div class="form-group">
+                  <label for="titleSelector">Gender</label>
+                  <select class="form-control" id="titleSelector">
+                    <option>Male</option>
+                    <option>Female</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="exampleFormControlFile1">Upload Profile Picture</label><br/>
+                  <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                </div>
+                <div class="form-group">
+                  <label for="phone_number">Phone Number</label>
+                  <input type="number" class="form-control" id="phone_number" placeholder="09********">
+                </div>
+                <div class="form-group">
+                  <label for="email">Email address</label>
+                  <input type="email" class="form-control" id="email" placeholder="name@example.com">
+                </div>
+                <div class="form-group">
+                  <label for="membership">Membership type</label>
+                  <select class="form-control membership-select" id="membership">
+                    <option>Regular</option>
+                    <option>Corporate</option>
+                    <option>Associate</option>
+                    <option>Junior(Medical Students)</option>
+                    <option>Honorable</option>
+                    <option>NEDD</option>
+                    <option>Lifetime</option>
+                    <option>JDN</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                <label for="fee">Membership fee amount</label>
+                
+                <input class="medapay-hide form-control" id="fee"type="text" value="Readonly input here…" readonly>
+              </div>
+                <div class="medapay-show">
+                <div class="form-group">
+                  <label for="reference">Genrate Payment refernce</label>
+                  
+                  <input class="form-control" id="reference" type="text" placeholder="Readonly input here…" readonly>
+                </div>
+                
+                <div>
+
+                  <button href="#" type="button" class="btn btn-danger">Pay with MedaPay</button>
+                </div>
+                </div>
+                
+
+              </form>
+
+
+              <!-- end custom webform -->
+            </div>
+          </div>
+
+          <div class="col-lg-4">
+            <div class="portfolio-info">
+              <h3>Project information</h3>
+              <ul>
+                <li><strong>Category</strong>: Web design</li>
+                <li><strong>Client</strong>: ASU Company</li>
+                <li><strong>Project date</strong>: 01 March, 2020</li>
+                <li><strong>Project URL</strong>: <a href="#">www.example.com</a></li>
+              </ul>
+            </div>
+            <div class="portfolio-description">
+              <h2>This is an example of portfolio detail</h2>
+              <p>
+                Autem ipsum nam porro corporis rerum. Quis eos dolorem eos itaque inventore commodi labore quia quia. Exercitationem repudiandae officiis neque suscipit non officia eaque itaque enim. Voluptatem officia accusantium nesciunt est omnis tempora consectetur dignissimos. Sequi nulla at esse enim cum deserunt eius.
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Portfolio Details Section -->
+
+  </main><!-- End #main -->
+  
+  <script>
+    const selectElement = document.querySelector('.membership-select');
+  
+  selectElement.addEventListener('change', (event) => {
+  
+   console.log(event.target.value)
+
+   let membership_type= event.target.value;
+	    let amount;
+	    switch(membership_type){
+	        case 'Associate':
+	            amount = '1';
+	            break;
+	        case 'Junior(Medical Students)':
+	            amount = '100';
+	            break;
+	        case 'Regular':
+	            amount = '500';
+	            break;
+	        case 'Corporate':
+	            amount = '10000';
+	            break;
+	        case 'Honorable':
+	            amount = '0';
+	            break;  
+	        case 'Lifetime':
+	            amount = '5000';
+	            break;   
+	        default:
+	             amout='0';
+               break;
+	          }
+	          document.querySelector("#fee").classList.remove("medapay-hide");
+	          document.querySelector("#fee").classList.add("medapay-show");
+            document.querySelector('#fee').value =amount;
+          let full_name=  document.querySelector('#full_name').value;
+          let phone_number=  document.querySelector('#phone_number').value;
+           
+ 
+
+   //server call to medapay
+        
+const accessToken ='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhdG9tZWRhQDM2MGdyb3VuZC5jb20iLCJuYW1lIjoiTWVkYSBWb3VjaGVyIiwicGhvbmUiOiIrMjUxOTEzMDA4NTk1IiwiaXNzIjoiIiwiaWF0IjoxNTk4OTY0NTQwLCJleHAiOjIwMzA1MDA1NDB9.0xCu1GltD3fM8EoZOryDtw7zQMvyBWq1vBbIzQEH1Fk';
+	 
+	    
+	    
+	    
+	  let link;  
+	    
+	    //call the whitelist functions 
+	   let fr={{%frappe%}};
+     fr.call({
+    method: 'em_member.em_member.doctype.member.member.paywithMeda',
+    args: {
+        self:'self',
+        args: {
+            
+        accessToken:accessToken,
+        membership_type:membership_type,
+        amount:amount,
+        full_name:frm.doc.full_name,
+        phone_number:frm.doc.phone_number
+        }
+        
+    },
+   
+    callback: (r) => {
+      // console.log(r.message.billReferenceNumber,r.message.link.href);
+      console.log(r);
+      // frm.set_value('generate_payment_reference',r.message.billReferenceNumber)
+      // frm.set_value('generate_payment_reference',r.message.billReferenceNumber)
+      // link = r.message.link.href;
+      // frm.set_value('medapay',r.message.link.href);
+      // frm.set_value('member_status','pending...')
+      document.querySelector('#fee').value =amount;
+
+    },
+    error: (r) => {
+       
+        console.log(r,'error')
+    }
+    
+	   })  
+
+
+
+	    
+	    
+    });
+
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </script>
+{% endblock %}
