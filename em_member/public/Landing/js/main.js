@@ -32,10 +32,7 @@
       }
     }
   }
-  /**
-   * date Picker Initialization
-   */
-   $('.datepicker').datepicker();
+ 
 
   /**
    * Easy on scroll event listener 

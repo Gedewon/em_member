@@ -1,7 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "IM.#####",
+ "autoname": "field:email",
  "creation": "2021-12-29 04:44:34.168975",
  "doctype": "DocType",
  "editable_grid": 1,
@@ -36,12 +36,14 @@
   "membership_id",
   "membership_type",
   "membership_fee_amount",
-  "pay",
   "generate_payment_reference",
+  "medapay",
   "membership_card",
   "i_need_sms_notification",
   "member_status",
-  "organization"
+  "organization",
+  "published",
+  "route"
  ],
  "fields": [
   {
@@ -55,8 +57,7 @@
    "fieldname": "date_of_birth",
    "fieldtype": "Date",
    "in_list_view": 1,
-   "label": "Date of Birth",
-   "reqd": 1
+   "label": "Date of Birth"
   },
   {
    "fieldname": "geder",
@@ -93,7 +94,8 @@
    "fieldname": "email",
    "fieldtype": "Data",
    "label": "Email",
-   "reqd": 1
+   "reqd": 1,
+   "unique": 1
   },
   {
    "collapsible": 1,
@@ -188,7 +190,7 @@
   },
   {
    "fieldname": "membership_id",
-   "fieldtype": "Image",
+   "fieldtype": "Attach Image",
    "label": "Membership ID "
   },
   {
@@ -234,18 +236,34 @@
    "options": "Organization"
   },
   {
-   "fieldname": "pay",
-   "fieldtype": "Button",
-   "label": "Pay with MedaPy"
+   "fieldname": "medapay",
+   "fieldtype": "Small Text",
+   "label": "Pay with MedaPay : open the link in new Tab",
+   "max_height": "35px",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "published",
+   "fieldtype": "Check",
+   "label": "published"
+  },
+  {
+   "fieldname": "route",
+   "fieldtype": "Data",
+   "label": "Route",
+   "read_only": 1
   }
  ],
+ "has_web_view": 1,
  "index_web_pages_for_search": 1,
+ "is_published_field": "published",
  "links": [],
- "modified": "2022-02-10 08:35:34.251245",
+ "modified": "2022-02-17 12:03:05.841475",
  "modified_by": "Administrator",
  "module": "Em Member",
  "name": "Member",
- "naming_rule": "Expression (old style)",
+ "naming_rule": "By fieldname",
  "owner": "Administrator",
  "permissions": [
   {
@@ -262,6 +280,7 @@
   }
  ],
  "quick_entry": 1,
+ "route": "members",
  "sort_field": "modified",
  "sort_order": "DESC",
  "states": [],

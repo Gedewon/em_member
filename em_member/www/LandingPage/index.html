@@ -18,7 +18,7 @@
             <a href="https://www.youtube.com/watch?v=TKxXi29cKPk" class="glightbox btn-watch-video"><i class="bi bi-play-circle"></i><span>Watch Video</span></a>
           </div>
         </div>
-        <div class="col-lg-6 order-1 order-lg-2 hero-img">
+        <div class="col-lg-6 order-1 order-lg-2 hero-img"membershipId>
           <img src="assets/em_member/Landing/img/Ema_logo.png" class="img-fluid animated" alt="">
         </div>
       </div>
@@ -36,95 +36,119 @@
           <div class="col-lg-4 col-md-6">
             <div class="icon-box">
               <div class="icon"><i class="bi bi-laptop"></i></div>
-              <h4 class="title"><a href="">Status - ACTIVE</a></h4>
+              {% if logedinMember %}
+              <h4 class="title"><a href="">Status - {{logedinMember.member_status }}</a></h4>
               <p class="description">if your status is inactive pleas activate you Membership by paying your due Membership fee!!</p>
+              {%else%}
+              <h4 class="title"><a href="">Status - Not Registored</a></h4>
+              <p class="description">Hello There wellcome to Ethiopian Medical Assosatoin page.please be part of our family by registorring. To Registory press <strong>Getstarted</strong> button and press <strong>Registor!!</strong></p>
+              {% endif %}
             </div>
           </div>
           <div class="col-lg-4 col-md-6 mt-4 mt-md-0">
-            <div class="icon-box">
+            <div class="icon-box certificate">
               <div class="icon"><i class="bi bi-card-checklist"></i></div>
-              <h4 class="title"><a href="">Certification</a></h4>
-              <p class="description">Here you will find list of Certification you acquire </div>
+              <h4 class="title"><a >Certification</a></h4>
+              <p class="description">Here you will find list of Certification you acquire and download it</div>
           </div>
           <div class="col-lg-4 col-md-6 mt-4 mt-lg-0">
-            <div class="icon-box">
+            <div class="icon-box membershipId">
               <div class="icon"><i class="bi bi-clipboard-data"></i></div>
-              <h4 class="title"><a href="">Membership ID</a></h4>
-              <p class="description">Here you can see your Membership ID and Download it</p>
+              <h4 class="title"><a  >Membership ID</a></h4>
+              <p class="description">Here you can see your Membership ID once you registor and Download it</p>
             </div>
           </div>
         </div>
-
+        <div class="showid medapay-hide">
+          <a href={{logedinMember.membership_id}}  download="MembershipID">
+            <img src={{logedinMember.membership_id}}  alt="MembershipID" />
+          </a>
+        </div>
+        <div class="showcertificatoin medapay-hide">
+          <a href={{Certification.content}}  download="Certification">
+          <img src={{Certification.content}}  alt="Membership Certification" />
+          </a>
+        </div>
+        
       </div>
     </section><!-- End Featured Services Section -->
 
     <!-- ======= About Section ======= -->
     <section id="about" class="about">
       <div class="container">
-
+        {%if logedinMember%}
         <div class="row">
           <div class="col-lg-6">
+            {% if logedinMember%}
+            <img src={{logedinMember.picture}}  class="member-profile"alt="">
+            {% else %}
             <img src="assets/em_member/Landing/img/about.png" class="img-fluid" alt="">
+            {% endif %}
+            
           </div>
           <div class="col-lg-6 pt-4 pt-lg-0 content">
-            <h3>Dr.Biruck Tilahun</h3>
+            <h3>{{logedinMember.prefix}}.{{logedinMember.full_name}}</h3>
             <p class="fst-italic">
-              Critical Care Medicine Specialists
+              {{logedinMember.profession_specialization}}
             </p>
             <ul>
-              <li><i class="bi bi-check-circle"></i> work at Tikure Anbesa Medical Clinic</li>
-              <li><i class="bi bi-check-circle"></i> biruc@gmail.com</li>
-              <li><i class="bi bi-check-circle"></i> +2519 1123 58</li>
+              <li><i class="bi bi-check-circle"></i>Employed At: {{logedinMember.place_of_employmentinstitution}}</li>
+              <li><i class="bi bi-check-circle"></i>Email: {{email}}</li>
+              <li><i class="bi bi-check-circle"></i>Phone: +251{{logedinMember.phone_number}}</li>
             </ul>
             <p>
-             Honorable Member of Ethiopian Medical Association
+          {{logedinMember.membership_type}} Member of Ethiopian Medical Association
             </p>
             <div class="updateprofile">
           <a href="/Membership" class="btn-get-started scrollto">Update Profile</a>
         </div>
           </div>
         </div>
-        
-
+        {% else %}
+        <div class="updateprofile">
+          <a href="/Membership" class="btn-get-started scrollto">Registor</a>
+        </div>
+        {% endif %}
       </div>
     </section><!-- End About Section -->
-
+    
     <!-- ======= Counts Section ======= -->
+    
+
     <section id="counts" class="counts">
       <div class="container">
-
+        
         <div class="row counters">
-
+          
           <div class="col-lg-3 col-6 text-center">
             <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1" class="purecounter"></span>
-            <p>day's</p>
-          </div>
-
-          <div class="col-lg-3 col-6 text-center">
-            <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1" class="purecounter"></span>
-            <p>Hours</p>
-          </div>
-
-          <div class="col-lg-3 col-6 text-center">
-            <span data-purecounter-start="0" data-purecounter-end="1463" data-purecounter-duration="1" class="purecounter"></span>
-            <p>minutes</p>
-          </div>
-
-          <div class="col-lg-3 col-6 text-center">
-            <span data-purecounter-start="0" data-purecounter-end="15" data-purecounter-duration="1" class="purecounter"></span>
-            <p>seconds</p>
-          </div>
-         
-        </div>
- <div class="dayleft text-center">
-            <p>left until Membership expire !!</p>
+            <p>10 day's</p>
           </div>
           
+          <div class="col-lg-3 col-6 text-center">
+            <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1" class="purecounter"></span>
+            <p>2 Hours</p>
+        </div>
+        
+        <div class="col-lg-3 col-6 text-center">
+          <span data-purecounter-start="0" data-purecounter-end="1463" data-purecounter-duration="1" class="purecounter"></span>
+          <p>3 minutes</p>
+        </div>
+        
+        <div class="col-lg-3 col-6 text-center">
+          <span data-purecounter-start="0" data-purecounter-end="15" data-purecounter-duration="1" class="purecounter"></span>
+          <p>2 seconds</p>
+        </div>
+        
+      </div>
+<div class="dayleft text-center">
+          <p>left until Membership expire !!</p>
+        </div>
+        
       </div>
     </section><!-- End Counts Section -->
-
-    <!-- ======= Services Section ======= -->
-    <section id="services" class="services section-bg">
+      <!-- ======= Services Section ======= -->
+      <section id="services" class="services section-bg">
       <div class="container">
 
         <div class="section-title">
@@ -133,16 +157,28 @@
           <p>list of upcoming events </p>
         </div>
 
+        
+
         <div class="row">
+          {% set doc = frappe.get_all('Events',fields=['event_name','status','date','time','location','image'] ) %}
+          {% for event in doc %}
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
             <div class="icon-box">
-              <div class="icon"><i class="bx bxl-dribbble"></i></div>
-              <h4><a href="">Event-1</a></h4>
-              <p>description of event one </p>
+              <div class="">
+                <img src={{event.image}}  class="event-img"alt="">
+              </div>
+              <h4><a href="">{{event.event_name}} </a></h4>
+              <p>Status : {{event.status}}</p>
+              <p>Date : {{event.date}}</p>
+              <p>Time : {{event.time}}</p>
+              <p>Location : {{event.location}}</p>
+              
             </div>
+            <button class="event-button">Book Now</button>
           </div>
-
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
+          {% endfor %}
+          
+          <!-- <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
             <div class="icon-box">
               <div class="icon"><i class="bx bx-file"></i></div>
               <h4><a href="">Event-2</a></h4>
@@ -181,7 +217,7 @@
               <p>description of event six</p>
             </div>
           </div>
-          
+           -->
         </div>
 
       </div>
@@ -259,7 +295,46 @@
 
       </div>
     </section><!-- End Contact Section -->
-
   </main><!-- End #main -->
+    <script>
+        console.log('did i get to the script ')
+        let item = document.querySelector('.membershipId');
+        item.addEventListener('click',event=>{
+          console.log('click event ');
+          let id = document.querySelector('.showid')
+           if(id.classList.contains('medapay-hide')){
+                        
+                        id.classList.add("medapay-show");
+                      id.classList.remove("medapay-hide");
+  
+                          } else{
+                    
+                            id.classList.add("medapay-hide");
+                      id.classList.remove("medapay-show");
+  
+                          }   })
+
+                          //show certification
+
+         document.querySelector('.certificate').addEventListener('click',event=>{
+          console.log('click event ');
+          let id = document.querySelector('.showcertificatoin')
+           if(id.classList.contains('medapay-hide')){
+                        
+                        id.classList.add("medapay-show");
+                      id.classList.remove("medapay-hide");
+  
+                          } else{
+                    
+                            id.classList.add("medapay-hide");
+                      id.classList.remove("medapay-show");
+  
+                          }   })
+
+                          
+
+
+    </script>
+
 
 {% endblock %}

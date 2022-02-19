@@ -64,3 +64,65 @@ def paywithMeda(self,args):
 	return response.json()
 	# body ={
         
+@frappe.whitelist(allow_guest=True)
+def saveUsers(self,args):
+	input =json.loads(args)
+	print("-------------------------from backend--------------------------------")
+	print(input)
+	email =frappe.session.user
+	isAle = frappe.db.exists('Member',email)
+	if isAle:
+		frappe.db.set_value('Member', email, {
+			'prefix':input['prefix'],
+			'titleoptional':input['title'],
+			'full_name':input['full_name'],
+			'geder':input['gender'],
+			# 'picture':input['image'],
+			'phone_number':input['phone_number'],
+			'email':input['email'],
+			'profession_specialization':input['specialization'],
+			'place_of_employmentinstitution':input['place_of_employmentinstitution'],
+			'membership_type':input['membership'],
+			'membership_fee_amount':input['feeamount'],
+			'generate_payment_reference':input['reference']
+			})
+	else:
+		doc = frappe.new_doc('Member')
+		doc.prefix=input['prefix']
+		doc.titleoptional=input['title']
+		doc.full_name=input['full_name']
+		doc.geder=input['gender']
+		# doc.picture=input['image']
+		doc.phone_number=input['phone_number']
+		doc.email=input['email']
+		doc.profession_specialization=input['specialization']
+		doc.place_of_employmentinstitution=input['place_of_employmentinstitution']
+		doc.membership_type=input['membership']
+		doc.membership_fee_amount=input['feeamount']
+		doc.generate_payment_reference=input['reference']
+		doc.insert(
+   			ignore_permissions=True, # ignore write permissions during insert
+    		ignore_links=True, # ignore Link validation in the document
+    		ignore_if_duplicate=True, # dont insert if DuplicateEntryError is thrown
+    		ignore_mandatory=True # insert even if mandatory fields are not set
+			)
+	return email
+
+@frappe.whitelist(allow_guest=True)
+def attachImage(self,args):
+	input =json.loads(args)
+	print("-------------------------Image-data--------------------------------")
+	print('row',args)
+	print('json',input)
+	email =frappe.session.user
+	frappe.db.set_value('Member', email, {
+			'picture':input['url']
+			})	
+	
+
+	
+		
+
+		
+
+				

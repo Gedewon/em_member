@@ -1,0 +1,37 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "Attende.#####",
+ "creation": "2022-02-19 22:40:09.609736",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "eventname",
+  "attende"
+ ],
+ "fields": [
+  {
+   "fieldname": "eventname",
+   "fieldtype": "Data",
+   "label": "Eventname"
+  },
+  {
+   "fieldname": "attende",
+   "fieldtype": "Data",
+   "label": "Attende"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2022-02-19 22:45:42.173857",
+ "modified_by": "Administrator",
+ "module": "Em Member",
+ "name": "EventAttende",
+ "naming_rule": "Expression (old style)",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

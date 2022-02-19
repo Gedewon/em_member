@@ -5,6 +5,37 @@
 * License: https://bootstrapmade.com/license/
 */
 
+
+
+
+/* membership profile Image */
+.member-profile{
+  
+  border-radius: 50% ;
+
+}
+.event-button{
+  background: rgb(22, 223, 126);
+  border: 0;
+  padding: 10px 24px;
+  color: #fff;
+  transition: 0.4s;
+  border-radius: 4px;
+  margin-top: 40px;
+  font-family: "Raleway", sans-serif;
+
+  
+}
+.event-button:hover{
+  background: rgb(14, 158, 88);
+  font-family: "Raleway", sans-serif;
+
+
+}
+
+
+
+
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
@@ -525,6 +556,10 @@ section {
 .about .content p:last-child {
   margin-bottom: 0;
 }
+.about .container{
+  display: flex;
+  justify-content: center;
+}
 .about .updateprofile {
   font-family: "Raleway", sans-serif;
   font-weight: 500;
@@ -535,6 +570,7 @@ section {
   border-radius: 4px;
   transition: 0.5s;
   color: #fff;
+  justify-content: center;
   box-shadow: 0 8px 28px rgba(22, 223, 126, 0.45);
 }
 .about .updateprofile:hover {
@@ -577,10 +613,13 @@ section {
 --------------------------------------------------------------*/
 .services .icon-box {
   text-align: center;
-  border: 1px solid #fff;
+  border: 1px solid rgb(22, 223, 126);
   padding: 80px 20px;
   transition: all ease-in-out 0.3s;
   background: #fff;
+  width: 400px;
+  margin-top: 40px;
+  
 }
 .services .icon-box .icon {
   margin: 0 auto;
@@ -589,6 +628,8 @@ section {
   justify-content: center;
   margin-bottom: 20px;
   transition: ease-in-out 0.3s;
+  overflow: auto;
+  clear: both;
 }
 .services .icon-box .icon i {
   color: #16df7e;
@@ -1096,10 +1137,83 @@ form{
 }
 .medapay-show{
   display:block !important;
+  transition: 3s;
+  
 }
 .medapay-hide{
+  transition: 3s;
   display: none !important;
 }
+
+.paywithmeda {
+  font-family: "Raleway", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 8px 30px 10px 30px;
+  border-radius: 10px;
+  transition: 0.5s;
+  color: #fff;
+  background: #f36609;
+  text-decoration: none;
+  box-shadow: 0 8px 28px rgba(22, 223, 126, 0.45);
+  margin-bottom: 20px;
+}
+.paywithmeda:hover {
+  background: #12e724;
+  text-decoration: none;
+
+  box-shadow: 0 8px 28px rgba(32, 107, 251, 0.45);
+}
+/* show detailed information */
+
+.filldetail{
+  font-family: "Raleway", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 8px 30px 10px 30px;
+  border-radius: 10px;
+  transition: 0.5s;
+  color: #fff;
+  background: #05f72d;
+  text-decoration: none;
+  box-shadow: 0 8px 28px rgba(22, 223, 126, 0.45);
+}
+.filldetail:hover{
+  background: #059511;
+  text-decoration: none;
+
+  box-shadow: 0 8px 28px rgba(32, 107, 251, 0.45);
+}
+
+.saveUpdate{
+  font-family: "Raleway", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 8px 30px 10px 30px;
+  border-radius: 10px;
+  transition: 0.5s;
+  color: #fff;
+  background: #05f72d;
+  text-decoration: none;
+  box-shadow: 0 8px 28px rgba(22, 223, 126, 0.45);
+
+}
+.saveUpdate:hover{
+  background: #059511;
+  text-decoration: none;
+
+  box-shadow: 0 8px 28px rgba(32, 107, 251, 0.45);
+}
+
+
+
+
 
 /*--------------------------------------------------------------
 # Footer
@@ -1209,4 +1323,9 @@ form{
     -moz-text-align-last: center;
     text-align-last: center;
   }
+}
+
+.header{
+  background-color: #059511;
+  color: white;
 }
