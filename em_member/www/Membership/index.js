@@ -135,9 +135,94 @@
                           // console.log(r,'success');
                           // console.log(r.message.link.href,'success');
                           // console.log(r.message.billReferenceNumber,'success');
-                        document.querySelector('#reference').value =r.message.billReferenceNumber;
-    
-                        document.querySelector('.paywithmeda').href =r.message.link.href;
+                        billReference = r.message.billReferenceNumber;
+                        document.querySelector('#reference').value =billReference;
+                        billLink = r.message.link.href;
+                        document.querySelector('.paywithmeda').href =billLink;
+                      
+                        //run the callback function here 
+                       
+                              /*
+                        GET https://api.sandboax.pay.meda.chat/v1/bills/1000000
+                          */
+                          /*
+                          status
+                        -created
+                        -pending 
+                        -canceled
+                        -complete
+
+                          */
+                     
+                         const getStatus = async function(){
+            frappe.call({
+              method: 'em_member.em_member.doctype.member.member.getStatus',
+              args: {
+                req: {
+                  billReference:billReference,
+                  accessToken:accessToken,
+                }
+              
+              },
+              callback:(r)=>{
+                console.log(r,'sucess with the payment ')
+                    /*
+                    
+                    Get the status 
+                    */
+                   let status = r.message.status;
+                    frappe.call({
+                      method: 'em_member.em_member.doctype.member.member.updateStatus',
+                      args: {
+                        req: {
+                          status:status,
+                          data:r.message
+
+                        }
+                      
+                      },
+                      callback:(r)=>{
+                        console.log(r,'sucess with the payment ')
+                    
+                      },
+                      erorr:(e)=>{
+                        console.log(e,"error")
+                      }
+                    })
+
+
+
+
+
+
+// end of changing the status 
+                console.log(r.message.status)
+                return r.message.status
+              },
+              error:(r)=>{
+                console.log(r,'error with the payment')
+              }
+            })
+
+          }
+          const minutes = 1;
+const interval = minutes * 1000;
+
+setInterval(function() {
+    // catch all the errors.
+  let   status =getStatus()
+  .catch(console.log);
+  // if(status == 'PAYED'){
+  //   console.log
+  // }
+}, interval);
+
+
+
+
+
+                      
+
                       },
                   error: (r) => {
                   

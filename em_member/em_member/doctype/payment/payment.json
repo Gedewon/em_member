@@ -30,9 +30,8 @@
   },
   {
    "fieldname": "payment_method",
-   "fieldtype": "Select",
-   "label": "Payment Method",
-   "options": "CBE\nDashen\nCOOP\nTelebirr"
+   "fieldtype": "Data",
+   "label": "Payment Method"
   },
   {
    "fieldname": "member_status",
@@ -41,7 +40,7 @@
   },
   {
    "fieldname": "date",
-   "fieldtype": "Date",
+   "fieldtype": "Data",
    "label": "Date"
   },
   {
@@ -52,7 +51,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-02-20 01:35:37.590538",
+ "modified": "2022-02-22 12:40:54.239014",
  "modified_by": "Administrator",
  "module": "Em Member",
  "name": "Payment",

@@ -2,12 +2,15 @@
 # For license information, please see license.txt
 
 # import frappe
+from copyreg import constructor
+from email import header
 from logging.config import valid_ident
 from frappe.email.doctype.email_group.email_group import add_subscribers
 from frappe.model.document import Document
 import frappe
 import requests 
 import json
+from datetime import datetime
 class Member(Document):
 	# def before_save(self):
 	# 	# 1.after registoring new member 
@@ -31,15 +34,33 @@ class Member(Document):
 		print(email_group)
 
 
+@frappe.whitelist(allow_guest=True)
+def getStatus(req):
+	input = json.loads(req)
+	billReference = input['billReference']
+	print('bill ref',billReference)
+	url = 'https://api.pay.meda.chat/api/bills/'+billReference
+	statusResponse = requests.get(url,headers={
+		"Authorization": 'Bearer '+input['accessToken'],
+
+		"Accept":"application/json"
+	})
+	print(statusResponse.status_code)
+	print(statusResponse.text)
+	print(statusResponse)
+	return statusResponse.json()
 
 
-@frappe.whitelist()
+
+
+
+@frappe.whitelist(allow_guest=True)
 def paywithMeda(self,args):
 	input =json.loads(args)
 	print(input)
 	print(type(input['phone_number']))
 	url ='https://api.pay.meda.chat/api/bills/'
-	payload={"purchaseDetails":{"orderId": "100","description": 'Paying for'+input["membership_type"]+'membership',"amount": int(input['amount']),"customerName": input['full_name'],"customerPhoneNumber" : '+'+str(input['phone_number'])},"redirectUrls": {"returnUrl": "http://ema.test:8001/app","cancelUrl": "http://ema.test:8001/","callbackUrl": "http://ema.test:8001/"}}
+	payload={"purchaseDetails":{"orderId": "100","description": 'Paying for'+input["membership_type"]+'membership',"amount": int(input['amount']),"customerName": input['full_name'],"customerPhoneNumber" : '+'+str(input['phone_number'])},"redirectUrls": {"returnUrl": "http://ema.test:8001/","cancelUrl": "http://ema.test:8001/","callbackUrl": ""}}
 	print(payload)
 	response = requests.post(url,
 		headers={
@@ -63,7 +84,58 @@ def paywithMeda(self,args):
 	print(response.json())
 	return response.json()
 	# body ={
-        
+@frappe.whitelist(allow_guest=True)
+def updateStatus(req):
+	input = json.loads(req)
+	print(input['status'])
+	refNo=input['data']['referenceNumber']
+	email = frappe.session.user
+	frappe.db.set_value('Member',email,{
+		'member_status':input['status']
+	})
+	isAle = frappe.db.exists('Payment',refNo)
+	if isAle:
+		frappe.db.set_value('Payment', refNo, {
+			'reference':input['data']['referenceNumber'],
+			'payment_status':input['data']['status'],
+			'payment_method':input['data']['paymentMethod'],
+			'member_status':input['data']['status'],
+			})
+	else:
+		doc = frappe.new_doc('Payment')
+		doc.reference=input['data']['referenceNumber']
+		doc.payment_status=input['data']['status']
+		doc.payment_method=input['data']['paymentMethod']
+		doc.member_status=input['data']['status']
+		doc.date = datetime.today().strftime("%d-%m-%Y")
+		doc.email = email
+		doc.insert(
+				ignore_permissions=True, # ignore write permissions during insert
+				ignore_links=True, # ignore Link validation in the document
+				ignore_if_duplicate=True, # dont insert if DuplicateEntryError is thrown
+				ignore_mandatory=True # insert even if mandatory fields are not set
+				)
+
+	# {'referenceNumber': '49342148', 'accountNumber': '+0923400585', 'customerName': 'Samuel', 'description': 'Paying forAssociatemembership', 'amount': 1, 'paymentType': 'general-payment', 'paymentMethod': 'not-selected', 'status': 'PENDING', 'createdAt': '2022-02-22T08:54:40.131Z', 'updatedAt': '2022-02-22T08:54:40.131Z', 'currency': 'ETB', 'orderId': '100', 'isSimulation': False}
+	# frappe.db.set_value("Payment")
+
+
+@frappe.whitelist(allow_guest=True)
+def bookEvent(req):
+	input = json.loads(req)
+	# print(input['event'])
+	# print(input['email'])
+	doc = frappe.new_doc('EventsAttende')
+	doc.eventsname = input['event']
+	doc.email= input['email']
+	doc.insert(
+   			ignore_permissions=True, # ignore write permissions during insert
+    		ignore_links=True, # ignore Link validation in the document
+    		ignore_if_duplicate=True, # dont insert if DuplicateEntryError is thrown
+    		ignore_mandatory=True # insert even if mandatory fields are not set
+			)	
+	return input
+
 @frappe.whitelist(allow_guest=True)
 def saveUsers(self,args):
 	input =json.loads(args)
@@ -118,11 +190,3 @@ def attachImage(self,args):
 	frappe.db.set_value('Member', email, {
 			'picture':input['url']
 			})	
-	
-
-	
-		
-
-		
-
-				

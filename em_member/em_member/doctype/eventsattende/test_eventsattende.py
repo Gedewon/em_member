@@ -4,5 +4,5 @@
 # import frappe
 import unittest
 
-class TestEventAttende(unittest.TestCase):
+class TestEventsAttende(unittest.TestCase):
 	pass

@@ -4,5 +4,5 @@
 # import frappe
 from frappe.model.document import Document
 
-class EventAttende(Document):
+class EventsAttende(Document):
 	pass

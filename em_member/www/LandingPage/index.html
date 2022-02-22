@@ -172,9 +172,15 @@
               <p>Date : {{event.date}}</p>
               <p>Time : {{event.time}}</p>
               <p>Location : {{event.location}}</p>
+
+
               
+              <h4><a>
+                  BOOKED
+              </a></h4>
             </div>
-            <button class="event-button">Book Now</button>
+  <button class="event-button" onclick="bookEvent('{{event.event_name}}','{{frappe.session.user }}')" >Book Now</button>
+  <!-- style="display:none" -->
           </div>
           {% endfor %}
           
@@ -330,7 +336,30 @@
                       id.classList.remove("medapay-show");
   
                           }   })
+           function bookEvent(event,email){
+             console.log(event);
+             console.log(email);
 
+
+             frappe.call({
+                      method: 'em_member.em_member.doctype.member.member.bookEvent',
+                      args: {
+                        req: {
+                          event:event,
+                          email:email
+
+                        }
+                      
+                      },
+                      callback:(r)=>{
+                        console.log(r,'sucess with the payment ')
+                    
+                      },
+                      erorr:(e)=>{
+                        console.log(e,"error")
+                      }
+                    })
+           }
                           
 
 
