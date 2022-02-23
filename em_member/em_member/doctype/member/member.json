@@ -226,8 +226,7 @@
    "default": "Inactive",
    "fieldname": "member_status",
    "fieldtype": "Data",
-   "label": "Member Status",
-   "read_only": 1
+   "label": "Member Status"
   },
   {
    "fieldname": "organization",
@@ -259,7 +258,7 @@
  "index_web_pages_for_search": 1,
  "is_published_field": "published",
  "links": [],
- "modified": "2022-02-17 12:03:05.841475",
+ "modified": "2022-02-23 09:14:53.798679",
  "modified_by": "Administrator",
  "module": "Em Member",
  "name": "Member",
