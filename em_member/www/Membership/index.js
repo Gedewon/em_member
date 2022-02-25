@@ -1,59 +1,4 @@
 
-  //   document.querySelector('#profilePicture').addEventListener('change',event=>{
-  //     // console.log('in the functions')
-  // const files = event.target.files;
-
-  // //this will return an ARRAY of File object
-  // // console.log(files);
-  //   })
-        
-
-// 		 console.log('i am in')
-// 	  //save user while processing payment's 
-//     document.querySelector('.paywithmeda').addEventListener('click',event=>{
-//          console.log('i am in the event listner')
-//         let newmember = {};
-//         //  1.when click save the data to the data base and link the data to database 
-//          newmember.image = document.querySelector('#profilePicture').value;
-//          newmember.title = document.querySelector('#titleSelector').value;
-//          newmember.full_name = document.querySelector('#full_name').value;
-//          newmember.gender = document.querySelector('#genderSelector').value;
-//          newmember.prefix = document.querySelector('#prefixSelector').value;
-//          newmember.phone_number = document.querySelector('#phone_number').value;
-//          newmember.email = document.querySelector('#email').value;
-//          newmember.specialization = document.querySelector('#profession_specialization').value;
-//          newmember.place_of_employmentinstitution = document.querySelector('#place_of_employmentinstitution').value;
-//          newmember.membership = document.querySelector('#membership').value;
-//          newmember.feeamount = document.querySelector('#fee').value;
-//          newmember.reference  = document.querySelector('#reference').value
-
-
-//          console.log(newmember)
-//          console.log('i out of the  in the event listner')
-
-//          //now try to add the value to frappe 
-
-//          frappe.db.set_value('Member', 'IM00004', {
-//            'prefix':newmember.prefix,
-//            'titleoptional':newmember.title,
-//            'full_name':newmember.full_name,
-//            'geder':newmember.gender,
-//            'picture':newmember.image,
-//            'phone_number':newmember.phone_number,
-//            'email':newmember.email,
-//            'profession_specialization':newmember.specialization,
-//            'place_of_employmentinstitution':newmember.place_of_employmentinstitution,
-//            'membership_type':newmember.membership,
-//            'membership_fee_amount':newmember.feeamount,
-//            'generate_payment_reference':newmember.reference
-
-// });
-//     })
-
-
-
-
-    // toogle detail sections
     document.querySelector('.filldetail').addEventListener('click',event=>{
         let detail = document.querySelector(".detail-section");
     
@@ -98,13 +43,34 @@
                             break;  
                         case 'Lifetime':
                             amount = '5000';
-                            break;   
+                            break;
+                        case 'NEDD':
+                            amount = '3000';
+                            break;       
                         default:
                             amout='0';
                             break;
                           }
                       document.querySelector("#fee").classList.remove("medapay-hide");
                       document.querySelector("#fee").classList.add("medapay-show");
+                      
+                      if(membership_type == 'NEDD'){
+                        
+                        document.querySelector(".dollarAccount").classList.remove("medapay-hide");
+                        document.querySelector(".dollarAccount").classList.add("medapay-show");
+
+                        document.querySelector(".withmeda").classList.add("medapay-hide");
+                        document.querySelector(".withmeda").classList.remove("medapay-show");
+                        
+                      }else{
+                       document.querySelector(".withmeda").classList.remove("medapay-hide");
+                       document.querySelector(".withmeda").classList.add("medapay-show");
+
+                       document.querySelector(".dollarAccount").classList.add("medapay-hide");
+                       document.querySelector(".dollarAccount").classList.remove("medapay-show");
+
+                     }
+
                       document.querySelector('#fee').value =amount+" ETB";
                       let full_name=  document.querySelector('#full_name').value;
                       let phone_number=  document.querySelector('#phone_number').value;
