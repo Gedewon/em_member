@@ -1,5 +1,72 @@
+    document.querySelector('.sendReceipt').addEventListener('click',event=>{
+      // let sendReceipt = document.querySelector(".sendReceipt");
+      let newmember = {};
+      newmember.image  =document.querySelector('#paymentRecipt').files[0]
+      frappe.call({
+        method: 'em_member.em_member.doctype.member.member.sendReceipt',
+          
+        callback: (r) => {
+                console.log(r,'success');
+                // now attach the image 
+               
+                let imageFile = new FormData();
+                if(newmember.image){
+                  imageFile.append('file',newmember.image);
+                
+               fetch('/api/method/upload_file',{
+                  headers:{
+                    'X-Frappe-CSRF-Token':frappe.csrf_token
+                  },
+                  method:'POST',
+                  body:imageFile
+               }).then(res=>res.json())
+               .then(data=>{
+                 console.log('data',data);
+                  //append to the doctype 
+                  if(data.message){
+                    //update member
+                    frappe.call({
+                                method: 'em_member.em_member.doctype.member.member.attachImage',
+                                args: {
+                                  self:'self',
+                                  args: {url:data.message.file_url,
+                                    from:'receipt'
+                                            }
+                                        },
+                                callback: (r) => {
+                                      
+                                  frappe.msgprint({
+                                    title: __('Notification'),
+                                    indicator: 'green',
+                                    message: __('Receipt sent successfully')
+                                });
+                                  },
+                                error: (r) => {
+                              
+                                    console.log(r,'error Image')
+                                  }
+                                   })
+                  
 
-    document.querySelector('.filldetail').addEventListener('click',event=>{
+                  }
+
+               })
+               }
+
+                    },
+        error: (r) => {
+      
+        console.log(r,'error')
+          }
+    })   
+                      
+        });  
+
+
+
+
+// fill detail 
+   document.querySelector('.filldetail').addEventListener('click',event=>{
         let detail = document.querySelector(".detail-section");
     
                           if(detail.classList.contains('medapay-hide')){
@@ -21,7 +88,7 @@
     
                   selectElement.addEventListener('change', (event) => {
                 
-                  console.log(event.target.value)
+                  // console.log(event.target.value)
     
                     let membership_type= event.target.value;
                     let amount;
@@ -131,7 +198,7 @@
               
               },
               callback:(r)=>{
-                console.log(r,'sucess with the payment ')
+                // console.log(r,'sucess with the payment ')
                     /*
                     
                     Get the status 
@@ -148,7 +215,7 @@
                       
                       },
                       callback:(r)=>{
-                        console.log(r,'sucess with the payment ')
+                        // console.log(r,'sucess with the payment ')
                     
                       },
                       erorr:(e)=>{
@@ -162,7 +229,7 @@
 
 
 // end of changing the status 
-                console.log(r.message.status)
+                // console.log(r.message.status)
                 return r.message.status
               },
               error:(r)=>{
@@ -209,7 +276,7 @@ setInterval(function() {
                newmember.image =  document.querySelector('#profilePicture').files[0];
                
     
-                console.log('the image link', newmember.image)
+                // console.log('the image link', newmember.image)
                 // console.log('the image link2', document.querySelector('#profilePicture').value);
     
                 newmember.title = document.querySelector('#titleSelector').value;
@@ -235,7 +302,7 @@ setInterval(function() {
                           args: newmember
                                 },  
                       callback: (r) => {
-                              console.log(r,'success');
+                              // console.log(r,'success');
                               // now attach the image 
                              
                               let imageFile = new FormData();
@@ -250,7 +317,7 @@ setInterval(function() {
                                 body:imageFile
                              }).then(res=>res.json())
                              .then(data=>{
-                               console.log('data',data);
+                              //  console.log('data',data);
                                 //append to the doctype 
                                 if(data.message){
                                   //update member
@@ -258,34 +325,20 @@ setInterval(function() {
                                               method: 'em_member.em_member.doctype.member.member.attachImage',
                                               args: {
                                                 self:'self',
-                                                args: {url:data.message.file_url
+                                                args: {url:data.message.file_url,
+                                                       from:'profile'
                                                           }
                                                       },
                                               callback: (r) => {
                                                     
-                                                  console.log(r,'success Image')
+                                                  // console.log(r,'success Image')
                                                 },
                                               error: (r) => {
                                             
                                                   console.log(r,'error Image')
                                                 }
                                                  })
-                                  // $.ajax({
-                                  //   url:`/api/resource/Member/${r.message}`,
-                                  //   type:'PUT',
-                                  //   headers:{
-                                  //     'Content-Type':'application/json',
-                                  //     'X-Frappe-CSRF-Token':frappe.csrf_token
-                                  //   },
-                                  //   data:JSON.stringify({picture:data.message.fileurl}),
-                                  //   success:(r)=>{
-                                  //     console.log(r)
-                                  //   },
-                                  //   error:(r)=>{
-                                  //     console.log(r)
-                                  //   }
-    
-                                  // })
+                                
     
                                 }
     
@@ -319,7 +372,9 @@ setInterval(function() {
                   
                 });
             
-             console.log('i am out')
+
+
+        
             
           
     

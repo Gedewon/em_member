@@ -5,6 +5,7 @@
 from copyreg import constructor
 from email import header
 from logging.config import valid_ident
+import profile
 from frappe.email.doctype.email_group.email_group import add_subscribers
 from frappe.model.document import Document
 import frappe
@@ -135,6 +136,17 @@ def bookEvent(req):
     		ignore_mandatory=True # insert even if mandatory fields are not set
 			)	
 	return input
+@frappe.whitelist(allow_guest=True)
+def sendReceipt():
+	doc = frappe.new_doc('Receipt')
+	doc.email = frappe.session.user
+	doc.insert(
+   			ignore_permissions=True, # ignore write permissions during insert
+    		ignore_links=True, # ignore Link validation in the document
+    		ignore_if_duplicate=True, # dont insert if DuplicateEntryError is thrown
+    		ignore_mandatory=True # insert even if mandatory fields are not set
+			)
+
 
 @frappe.whitelist(allow_guest=True)
 def saveUsers(self,args):
@@ -187,6 +199,12 @@ def attachImage(self,args):
 	print('row',args)
 	print('json',input)
 	email =frappe.session.user
-	frappe.db.set_value('Member', email, {
-			'picture':input['url']
-			})	
+	if input['from'] == 'profile':
+		frappe.db.set_value('Member', email, {
+				'picture':input['url']
+				})
+	elif input['from'] == 'receipt':
+		frappe.db.set_value('Receipt', email, {
+				'recepit':input['url']
+				})
+

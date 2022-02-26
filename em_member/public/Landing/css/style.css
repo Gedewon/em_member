@@ -7,7 +7,6 @@
 
 
 
-
 /* membership profile Image */
 .member-profile{
   
@@ -1145,6 +1144,36 @@ form{
   display: none !important;
 }
 
+/* paymentRecipt */
+.paymentRecipt {
+  font-family: "Raleway", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 8px 30px 10px 30px;
+  border-radius: 10px;
+  transition: 0.5s;
+  color: #fff;
+  background: #f36609;
+  text-decoration: none;
+  box-shadow: 0 8px 28px rgba(22, 223, 126, 0.45);
+  margin-bottom: 20px;
+}
+
+.paymentRecipt:hover {
+  background: #12e724;
+  text-decoration: none;
+
+  box-shadow: 0 8px 28px rgba(32, 107, 251, 0.45);
+}
+
+
+
+
+
+/* -------------------- */
+
 .paywithmeda {
   font-family: "Raleway", sans-serif;
   font-weight: 500;
@@ -1160,6 +1189,7 @@ form{
   box-shadow: 0 8px 28px rgba(22, 223, 126, 0.45);
   margin-bottom: 20px;
 }
+
 .paywithmeda:hover {
   background: #12e724;
   text-decoration: none;
