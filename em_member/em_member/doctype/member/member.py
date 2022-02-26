@@ -12,6 +12,7 @@ import frappe
 import requests 
 import json
 from datetime import datetime
+from PIL import Image,ImageDraw, ImageFilter
 class Member(Document):
 	# def before_save(self):
 	# 	# 1.after registoring new member 
@@ -192,6 +193,23 @@ def saveUsers(self,args):
 			)
 	return email
 
+# def idGeneratore():
+# 	id_blank = Image.open('assets/em_member/Landing/img/id_blank.png')
+# 	id_user = Image.open('assets/em_member/Landing/img/about.jpg')
+
+# 	mask_im = Image.new("1",id_user.size,0)
+# 	draw =ImageDraw.Draw(mask_im)
+# 	X=id_user.size[0]/2
+# 	Y=id_user.size[1]/2
+# 	r=(X/2)-(X/32)
+# 	draw.ellipse([(X-r, Y-r), (X+r, Y+r)], fill=255)
+# 	# mask_im.save('assets/em_member/Landing/img/circle.png')
+
+# 	id_background = id_blank.copy()
+# 	id_background.paste(id_user,(0,140),mask_im)
+# 	id_background.save('assets/em_member/Landing/img/id.png')
+# 	print('image saved')
+
 @frappe.whitelist(allow_guest=True)
 def attachImage(self,args):
 	input =json.loads(args)
@@ -203,8 +221,8 @@ def attachImage(self,args):
 		frappe.db.set_value('Member', email, {
 				'picture':input['url']
 				})
+		# idGeneratore()
 	elif input['from'] == 'receipt':
 		frappe.db.set_value('Receipt', email, {
 				'recepit':input['url']
 				})
-
