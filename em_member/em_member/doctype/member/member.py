@@ -193,22 +193,22 @@ def saveUsers(self,args):
 			)
 	return email
 
-# def idGeneratore():
-# 	id_blank = Image.open('assets/em_member/Landing/img/id_blank.png')
-# 	id_user = Image.open('assets/em_member/Landing/img/about.jpg')
+def idGeneratore():
+	id_blank = Image.open('assets/em_member/Landing/img/id_blank.png')
+	id_user = Image.open('assets/em_member/Landing/img/about.jpg')
 
-# 	mask_im = Image.new("1",id_user.size,0)
-# 	draw =ImageDraw.Draw(mask_im)
-# 	X=id_user.size[0]/2
-# 	Y=id_user.size[1]/2
-# 	r=(X/2)-(X/32)
-# 	draw.ellipse([(X-r, Y-r), (X+r, Y+r)], fill=255)
-# 	# mask_im.save('assets/em_member/Landing/img/circle.png')
+	mask_im = Image.new("1",id_user.size,0)
+	draw =ImageDraw.Draw(mask_im)
+	X=id_user.size[0]/2
+	Y=id_user.size[1]/2
+	r=(X/2)-(X/32)
+	draw.ellipse([(X-r, Y-r), (X+r, Y+r)], fill=255)
+	# mask_im.save('assets/em_member/Landing/img/circle.png')
 
-# 	id_background = id_blank.copy()
-# 	id_background.paste(id_user,(0,140),mask_im)
-# 	id_background.save('assets/em_member/Landing/img/id.png')
-# 	print('image saved')
+	id_background = id_blank.copy()
+	id_background.paste(id_user,(0,140),mask_im)
+	id_background.save('assets/em_member/Landing/img/id.png')
+	print('image saved')
 
 @frappe.whitelist(allow_guest=True)
 def attachImage(self,args):
