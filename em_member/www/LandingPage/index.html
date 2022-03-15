@@ -12,14 +12,17 @@
         <div class="col-lg-6 pt-5 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center">
           <h1>Ethiopian Medical Association
           </h1>
-          <h2>dependable physicians for better health</h2>
+          <h2>Dependable physicians for better health</h2>
           <div class="d-flex">
-            <a href="#about" class="btn-get-started scrollto">Get Started</a>
+            {% if logedinMember %}
+            {% else %}
+            <a href="/Membership" class="btn-get-started scrollto">Register</a>
+            {% endif %}
             <a href="https://www.youtube.com/watch?v=TKxXi29cKPk" class="glightbox btn-watch-video"><i class="bi bi-play-circle"></i><span>Watch Video</span></a>
           </div>
         </div>
         <div class="col-lg-6 order-1 order-lg-2 hero-img"membershipId>
-          <img src="assets/em_member/Landing/img/Ema_logo.png" class="img-fluid animated" alt="">
+          <img src="assets/em_member/Landing/img/EMA-logo.png" class="img-fluid animated" alt="">
         </div>
       </div>
     </div>
@@ -38,10 +41,10 @@
               <div class="icon"><i class="bi bi-laptop"></i></div>
               {% if logedinMember %}
               <h4 class="title"><a href="">Status - {{logedinMember.member_status }}</a></h4>
-              <p class="description">if your status is inactive pleas activate you Membership by paying your due Membership fee!!</p>
+              <p class="description">if your status is inactive please activate you Membership by paying your due Membership fee!!</p>
               {%else%}
-              <h4 class="title"><a href="">Status - Not Registored</a></h4>
-              <p class="description">Hello There wellcome to Ethiopian Medical Assosatoin page.please be part of our family by registorring. To Registory press <strong>Getstarted</strong> button and press <strong>Registor!!</strong></p>
+              <h4 class="title"><a href="">Status - Not Registered</a></h4>
+              <p class="description">Become part of the pioneering association by becoming a member. <strong> Press Register. </strong> </p>
               {% endif %}
             </div>
           </div>
@@ -55,7 +58,7 @@
             <div class="icon-box membershipId">
               <div class="icon"><i class="bi bi-clipboard-data"></i></div>
               <h4 class="title"><a  >Membership ID</a></h4>
-              <p class="description">Here you can see your Membership ID once you registor and Download it</p>
+              <p class="description">Here you can see your Membership ID once you register and Download it</p>
             </div>
           </div>
         </div>
@@ -106,7 +109,7 @@
         </div>
         {% else %}
         <div class="updateprofile">
-          <a href="/Membership" class="btn-get-started scrollto">Registor</a>
+          <a href="/Membership" class="btn-get-started scrollto">Register</a>
         </div>
         {% endif %}
       </div>
@@ -243,7 +246,7 @@
         <div class="section-title">
           <span>Contact</span>
           <h2>Contact</h2>
-          <p>reach us with any inquary</p>
+          <p>Reach us with any inquires</p>
         </div>
 
         <div class="row">

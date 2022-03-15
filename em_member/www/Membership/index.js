@@ -112,7 +112,7 @@
                             amount = '5000';
                             break;
                         case 'NEDD':
-                            amount = '3000';
+                            amount = '100';
                             break;       
                         default:
                             amout='0';
@@ -138,7 +138,7 @@
 
                      }
 
-                      document.querySelector('#fee').value =amount+" ETB";
+                      document.querySelector('#fee').value =amount + (membership_type == 'NEDD' ? "USD" : " ETB");
                       let full_name=  document.querySelector('#full_name').value;
                       let phone_number=  document.querySelector('#phone_number').value;
                
