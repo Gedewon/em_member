@@ -1,7 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "field:email",
+ "autoname": "Receipt:.#######",
  "creation": "2022-02-26 10:57:46.013050",
  "doctype": "DocType",
  "editable_grid": 1,
@@ -19,17 +19,16 @@
   {
    "fieldname": "email",
    "fieldtype": "Data",
-   "label": "email",
-   "unique": 1
+   "label": "email"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-02-26 11:43:25.364087",
+ "modified": "2022-03-20 13:42:08.238978",
  "modified_by": "Administrator",
  "module": "Em Member",
  "name": "Receipt",
- "naming_rule": "By fieldname",
+ "naming_rule": "Expression (old style)",
  "owner": "Administrator",
  "permissions": [
   {

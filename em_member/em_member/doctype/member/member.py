@@ -147,6 +147,7 @@ def sendReceipt():
     		ignore_if_duplicate=True, # dont insert if DuplicateEntryError is thrown
     		ignore_mandatory=True # insert even if mandatory fields are not set
 			)
+	
 
 
 @frappe.whitelist(allow_guest=True)

@@ -36,12 +36,17 @@
                                 callback: (r) => {
                                       
                                   frappe.msgprint({
-                                    title: __('Notification'),
+                                    title: __('Successfully'),
                                     indicator: 'green',
                                     message: __('Receipt sent successfully')
                                 });
                                   },
                                 error: (r) => {
+                                  frappe.msgprint({
+                                    title: __('Failed'),
+                                    indicator: 'red',
+                                    message: __('Failed to send Receipt')
+                                  })
                               
                                     console.log(r,'error Image')
                                   }
@@ -216,9 +221,20 @@
                       },
                       callback:(r)=>{
                         // console.log(r,'sucess with the payment ')
+                        frappe.msgprint({
+                          title: __('Successfully'),
+                          indicator: 'green',
+                          message: __('Payment proceed successfully')
+                      });
                     
                       },
                       erorr:(e)=>{
+                         // console.log(r,'sucess with the payment ')
+                         frappe.msgprint({
+                          title: __('Failed'),
+                          indicator: 'green',
+                          message: __('Payment process Failed')
+                      });
                         console.log(e,"error")
                       }
                     })
