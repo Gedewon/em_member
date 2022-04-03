@@ -1,9 +1,147 @@
-    document.querySelector('.sendReceipt').addEventListener('click',event=>{
+   //use Local storage 
+   console.log(localStorage)
+
+   function storageAvailable(type) {
+    var storage;
+    try {
+        storage = window[type];
+        var x = '__storage_test__';
+        storage.setItem(x, x);
+        storage.removeItem(x);
+        return true;
+    }
+    catch(e) {
+        return e instanceof DOMException && (
+            // everything except Firefox
+            e.code === 22 ||
+            // Firefox
+            e.code === 1014 ||
+            // test name field too, because code might not be present
+            // everything except Firefox
+            e.name === 'QuotaExceededError' ||
+            // Firefox
+            e.name === 'NS_ERROR_DOM_QUOTA_REACHED') &&
+            // acknowledge QuotaExceededError only if there's something already stored
+            (storage && storage.length !== 0);
+    }
+};
+
+
+
+
+var inputForms={
+  prefix:document.getElementById('prefixSelector'),
+  titleSelector:document.getElementById('titleSelector'),
+  fullName:document.getElementById('full_name'),
+  genderSelector:document.getElementById('genderSelector'),
+  profilePicture:document.getElementById('profilePicture'),
+  phoneNumber:document.getElementById('phone_number'),
+  email: document.getElementById('email'),
+  profession:document.getElementById('profession_specialization'),
+  placeEmployment:document.getElementById('place_of_employmentinstitution'),
+  memberShip:document.getElementById('membership'),
+  // image:document.getElementById('image'),
+  // reference:document.getElementById('reference')
+
+};
+
+function populateStorage() {
+  localStorage.setItem('prefix',inputForms.prefix.value);
+  localStorage.setItem('tileSelector', inputForms.titleSelector.value);
+  localStorage.setItem('full_name', inputForms.fullName.value);
+  localStorage.setItem('genderSelector', inputForms.genderSelector.value);
+  localStorage.setItem('profilePicture', inputForms.profilePicture.value);
+  localStorage.setItem('phone_number', inputForms.phoneNumber.value);
+  localStorage.setItem('email', inputForms.email.value);
+  localStorage.setItem('profession_specialization', inputForms.profession.value);
+  localStorage.setItem('place_of_employmentinstitution', inputForms.placeEmployment.value);
+  localStorage.setItem('membership', inputForms.memberShip.value);
+  // localStorage.setItem('reference', inputForms.reference.value);
+
+
+  setStyles();
+}
+function setStyles() {
+
+  var prefix =localStorage.getItem('prefix');
+  var titleSelector = localStorage.getItem('tileSelector');
+  var fullName = localStorage.getItem('full_name');
+  var genderSelector = localStorage.getItem('genderSelector');
+  var profilePicture = localStorage.getItem('profilePicture');
+  var phoneNumber = localStorage.getItem('phone_number');
+  var email = localStorage.getItem('email');
+  var profession = localStorage.getItem('profession_specialization');
+  var placeEmployment = localStorage.getItem('place_of_employmentinstitution');
+  var memberShip = localStorage.getItem('membership');
+  // var reference = localStorage.getItem('reference');
+
+
+
+  //make it DRY i am lazy though :)
+  inputForms.prefix.value = prefix;
+  inputForms.titleSelector.value = titleSelector;
+  inputForms.fullName.value = fullName;
+  inputForms.genderSelector.value = genderSelector;
+  inputForms.profilePicture.value = profilePicture;
+  inputForms.phoneNumber.value = phoneNumber;
+  inputForms.email.value = email;
+  inputForms.profession.value = profession;
+  inputForms.placeEmployment.value = placeEmployment;
+  inputForms.memberShip.value = memberShip;
+  // inputForms.image.value = reference;
+};
+
+(function(inputForms){ 
+  Object.values(inputForms).forEach(element => element.addEventListener('change',populateStorage))
+}
+)(inputForms);
+  
+
+
+
+
+(()=>{
+  if (storageAvailable('localStorage')) {
+  // Yippee! We can use localStorage awesomeness
+   if(!localStorage.getItem('full_name')){
+     populateStorage();
+   }else{
+     setStyles();
+   }
+
+}
+else {
+  // Too bad, no localStorage for us
+}})();
+
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   document.querySelector('.sendReceipt').addEventListener('click',event=>{
       // let sendReceipt = document.querySelector(".sendReceipt");
       let newmember = {};
       newmember.image  =document.querySelector('#paymentRecipt').files[0]
       frappe.call({
-        method: 'em_member.em_member.doctype.member.member.sendReceipt',
+        method: 'em_member.em_member.whitelist.sendReceipt',
           
         callback: (r) => {
                 console.log(r,'success');
@@ -26,7 +164,7 @@
                   if(data.message){
                     //update member
                     frappe.call({
-                                method: 'em_member.em_member.doctype.member.member.attachImage',
+                                method: 'em_member.em_member.whitelist.attachImage',
                                 args: {
                                   self:'self',
                                   args: {url:data.message.file_url,
@@ -156,7 +294,7 @@
             
               //call the whitelist functions 
                frappe.call({
-                    method: 'em_member.em_member.doctype.member.member.paywithMeda',
+                    method: 'em_member.em_member.whitelist.paywithMeda',
                     args: {
                       self:'self',
                       args: {
@@ -194,7 +332,7 @@
                      
                          const getStatus = async function(){
             frappe.call({
-              method: 'em_member.em_member.doctype.member.member.getStatus',
+              method: 'em_member.em_member.whitelist.getStatus',
               args: {
                 req: {
                   billReference:billReference,
@@ -210,7 +348,7 @@
                     */
                    let status = r.message.status;
                     frappe.call({
-                      method: 'em_member.em_member.doctype.member.member.updateStatus',
+                      method: 'em_member.em_member.whitelist.updateStatus',
                       args: {
                         req: {
                           status:status,
@@ -221,11 +359,11 @@
                       },
                       callback:(r)=>{
                         // console.log(r,'sucess with the payment ')
-                        frappe.msgprint({
-                          title: __('Successfully'),
-                          indicator: 'green',
-                          message: __('Payment proceed successfully')
-                      });
+                      //   frappe.msgprint({
+                      //     title: __('Successfully'),
+                      //     indicator: 'green',
+                      //     message: __('Payment proceed successfully')
+                      // });
                     
                       },
                       erorr:(e)=>{
@@ -312,7 +450,7 @@ setInterval(function() {
     
     
                 frappe.call({
-                      method: 'em_member.em_member.doctype.member.member.saveUsers',
+                      method: 'em_member.em_member.whitelist.saveUsers',
                       args: {
                           self:'self',
                           args: newmember
@@ -338,7 +476,7 @@ setInterval(function() {
                                 if(data.message){
                                   //update member
                                   frappe.call({
-                                              method: 'em_member.em_member.doctype.member.member.attachImage',
+                                              method: 'em_member.em_member.whitelist.attachImage',
                                               args: {
                                                 self:'self',
                                                 args: {url:data.message.file_url,
