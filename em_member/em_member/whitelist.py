@@ -4,6 +4,7 @@ from copyreg import constructor
 from email import header
 from logging.config import valid_ident
 import profile
+from typing_extensions import Self
 from frappe.email.doctype.email_group.email_group import add_subscribers
 from frappe.model.document import Document
 import frappe
@@ -12,7 +13,92 @@ import json
 from datetime import datetime
 from PIL import Image,ImageDraw, ImageFilter
 
+def run_trigger(self, event='on_login'):
+	for method in frappe.get_hooks().get(event, []):
+		frappe.call(frappe.get_attr(method), login_manager=self)
 
+def delete_session(sid=None, user=None, reason="Session Expired"):
+	from frappe.core.doctype.activity_log.feed import logout_feed
+
+	frappe.cache().hdel("session", sid)
+	frappe.cache().hdel("last_db_session_update", sid)
+	if sid and not user:
+		table = DocType("Sessions")
+		user_details = frappe.qb.from_(table).where(
+			table.sid == sid
+		).select(table.user).run(as_dict=True)
+		if user_details: user = user_details[0].get("user")
+
+	logout_feed(user, reason)
+	frappe.db.delete("Sessions", {"sid": sid})
+	frappe.db.commit()	
+def clear_cookies():
+	if hasattr(frappe.local, "session"):
+		frappe.session.sid = ""
+	frappe.local.cookie_manager.delete_cookie(["full_name", "user_id", "sid", "user_image", "system_user"])
+def clear_sessions(user=None, keep_current=False, device=None, force=False):
+	'''Clear other sessions of the current user. Called at login / logout
+
+	:param user: user name (default: current user)
+	:param keep_current: keep current session (default: false)
+	:param device: delete sessions of this device (default: desktop, mobile)
+	:param force: triggered by the user (default false)
+	'''
+
+	reason = "Logged In From Another Session"
+	if force:
+		reason = "Force Logged out by the user"
+
+	for sid in get_sessions_to_clear(user, keep_current, device):
+		delete_session(sid, reason=reason)
+
+def get_sessions_to_clear(user=None, keep_current=False, device=None):
+	'''Returns sessions of the current user. Called at login / logout
+
+	:param user: user name (default: current user)
+	:param keep_current: keep current session (default: false)
+	:param device: delete sessions of this device (default: desktop, mobile)
+	'''
+	if not user:
+		user = frappe.session.user
+
+	if not device:
+		device = ("desktop", "mobile")
+
+	if not isinstance(device, (tuple, list)):
+		device = (device,)
+
+	offset = 0
+	if user == frappe.session.user:
+		simultaneous_sessions = frappe.db.get_value('User', user, 'simultaneous_sessions') or 1
+		offset = simultaneous_sessions - 1
+
+	session = DocType("Sessions")
+	session_id = frappe.qb.from_(session).where((session.user == user) & (session.device.isin(device)))
+	if keep_current:
+		session_id = session_id.where(session.sid != frappe.db.escape(frappe.session.sid))
+
+	query = session_id.select(session.sid).offset(offset).limit(100).orderby(session.lastupdate, order=Order.desc)
+
+	return query.run(pluck=True)
+def DocType(*args, **kwargs):
+	return frappe.qb.DocType(*args, **kwargs)
+
+
+
+def logout(self=Self,arg='', user=None):
+		if not user: user = frappe.session.user
+		self.run_trigger('on_logout')
+
+		if user == frappe.session.user:
+			delete_session(frappe.session.sid, user=user, reason="User Manually Logged Out")
+			self.clear_cookies()
+		else:
+			clear_sessions(user)
+
+@frappe.whitelist(allow_guest=True)
+def logoutwhite():
+	logout()
 
 @frappe.whitelist(allow_guest=True)
 def getStatus(req):

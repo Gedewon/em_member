@@ -22,6 +22,7 @@
   "email_2",
   "section_break_14",
   "profession_specialization",
+  "other_specialization",
   "educational_credentials",
   "graduated_from_section",
   "institution",
@@ -31,6 +32,7 @@
   "year_of_completion",
   "section_break_23",
   "place_of_employmentinstitution",
+  "other_work",
   "unemployedseeking_employment",
   "unemployednot_seeking_employment",
   "membership_id",
@@ -130,8 +132,9 @@
   },
   {
    "fieldname": "profession_specialization",
-   "fieldtype": "Text",
-   "label": "Profession (Specialization)"
+   "fieldtype": "Select",
+   "label": "Profession (Specialization)",
+   "options": "General Medical Practitioner\nInternist\nPediatrician\nObstetrician and Gynecologist\nGeneral Surgeon\nNeurosurgeon\nOrthopedic & Trauma Surgeon\nPsychiatrist\nOphthalmologist\nDermatovenerologist\nOtorhinolaryngology (ear, nose and throat)\nAnesthesiologist\nPathologist\nRadiologist\nDental Science Professional\nDental Surgeons\nEndodontist\nOral & Maxillofacial Surgeons\nOrthodontist Specialist\nPediatric Dentistry Specialists\nPeriodontics Specialists\nProsthodontics Specialists\nOral Medicine Specialists' Scope of Practice\nPublic Health specialist I\nPublic Health Specialist II\nother"
   },
   {
    "fieldname": "educational_credentials",
@@ -173,8 +176,9 @@
   },
   {
    "fieldname": "place_of_employmentinstitution",
-   "fieldtype": "Data",
-   "label": "Place of Employment/Institution"
+   "fieldtype": "Select",
+   "label": "Place of Employment/Institution",
+   "options": "Adama General Hospital and Medical College\nAdama Hospital Medical College\nAddis Ababa University\nAdigrat University\nAfrica Medical College\nAksum University College of Health Science\nAmbo University Medical School\nArba Minch University\nArsi University College of Health Sciences\nBahir Dar University\nBethel Medical College\nDebre Berhan University\nDebre Markos University School of Medicine\nDebre Tabor University\nDefense University College of Health Sciences\nDilla University\nDire Dawa University School of Medicine\nEthiopian Catholic University\nGamby College of Medical Science\nHaramaya University\nHawassa University\nHayat Medical College\nJigjiga University\nJimma University\nMadda Walabu University College of Medicine\nMekelle University College of Health Sciences\nMizan-Tepi University\nMyungSung Medical College\nSant\u00e9 Medical College\nSt. Paul's Hospital Millennium Medical College\nUniversity of Gondar\nWachemo University\nWolaita Sodo University\nWolkite University\nWollega University\nWollo University\nYekatit 12 Hospital Medical College\nYirgalem Hospital Medical College\nBulehora College of medical sciences\nOther"
   },
   {
    "default": "0",
@@ -252,13 +256,23 @@
    "fieldtype": "Data",
    "label": "Route",
    "read_only": 1
+  },
+  {
+   "fieldname": "other_specialization",
+   "fieldtype": "Data",
+   "label": "Other specialization"
+  },
+  {
+   "fieldname": "other_work",
+   "fieldtype": "Data",
+   "label": "Other work"
   }
  ],
  "has_web_view": 1,
  "index_web_pages_for_search": 1,
  "is_published_field": "published",
  "links": [],
- "modified": "2022-03-16 09:53:06.723945",
+ "modified": "2022-04-04 11:51:17.105837",
  "modified_by": "Administrator",
  "module": "Em Member",
  "name": "Member",

@@ -312,7 +312,35 @@
     </section><!-- End Contact Section -->
   </main><!-- End #main -->
     <script>
-        console.log('did i get to the script ')
+
+
+console.log(document.querySelector('.logout'))
+document.querySelector('.logout').addEventListener("click",()=>{
+  //send get request to the given end point 
+  // get /api/method/frappe.auth.logout
+
+  frappe.call({
+                      method: 'em_member.em_member.whitelist.logoutwhite',
+                      args: { 
+                        
+                      },
+                      callback:(r)=>{
+                        console.log(r,'logout ')
+                    
+                      },
+                      erorr:(e)=>{
+                        console.log(e,"logout error")
+                      }
+                    })
+})
+
+
+
+
+
+
+
+
         let item = document.querySelector('.membershipId');
         item.addEventListener('click',event=>{
           console.log('click event ');

@@ -90,20 +90,122 @@
                 </div>
                 <div class="form-group">
                   <label for="profession_specialization">Profession (Specialization)*</label>
-                  {% if logedinMember %}
+                 <select class="form-control profession_specialization-select" id="profession_specialization" multiple>
+                  <option>General Medical Practitioner</option>
+                  <option>Internist</option>
+                  <option>Pediatrician</option>
+                  <option>Obstetrician and Gynecologist	</option>
+                  <option>General Surgeon</option>
+                  <option>Neurosurgeon</option>
+                  <option>Orthopedic & Trauma Surgeon</option>
+                  <option>Psychiatrist</option>
+                  <option>Ophthalmologist</option>
+                  <option>Dermatovenerologist</option>
+                  <option value="Otorhinolaryngology (ear, nose and throat)">Otorhinolaryngology /ENT (ear, nose and throat) Specialist</option>
+                  <option>Anesthesiologist</option>
+                  <option>Pathologist</option>
+                  <option>Radiologist</option>
+                  <option>Dental Science Professional </option>
+                  <option>Dental Surgeons</option>
+                  <option>Endodontist</option>
+                  <option>Oral & Maxillofacial Surgeons </option>
+                  <option>Orthodontist Specialist </option>
+                  <option>Pediatric Dentistry Specialists</option>
+                  <option>Periodontics Specialists</option>
+                  <option>Oral Medicine Specialists Scope of Practice</option>
+                  <option>Public Health specialist I</option>
+                  <option>Public Health Specialist II</option>
+                  <option value="other">Other..</option>
+                  
+                </select>
+                <!-- context from the database  -->
+                <!-- {% if logedinMember %}
                   <input class="form-control" id="profession_specialization" type="text" value={{logedinMember.profession_specialization}} placeholder="Profession (Specialization)">
                   {% else %}
                   <input class="form-control" id="profession_specialization" type="text" placeholder="profession_specialization">
-                  {% endif %}
+                  {% endif %} -->
+                  <!-- end of context from database  -->
+                </div>
+                <div class="form-group">
+                  <label for="otherSpe"></label>
+                  <input class="form-control" id="otherSpe" type="text"  placeholder="other (Specialization)">
+                <!-- <input id="otherSpe" placeholder="other.." type="text"/> -->
+                
                </div>
                <div class="form-group">
-                <label for="place_of_employmentinstitution">Place of employment(institution)</label>
-                {% if logedinMember %}
+                 
+               </div>
+               <div class="form-group">
+                 <label for="place_of_employmentinstitution">Place of work</label>
+                 <select class="form-control place_of_employmentinstitution-select" id="place_of_employmentinstitution" multiple>
+                  <option value="Adama General Hospital and Medical College">Adama General Hospital and Medical College</option>
+                  <option value="Adama Hospital Medical College">Adama Hospital Medical College</option>
+                  <option value="Addis Ababa University">Addis Ababa University, College of Health Sciences, School of Medicine</option>
+                  <option value="Adigrat University">Adigrat University College of Medicine and Health Science</option>
+                  <option >Africa Medical College</option>
+                  <option >Aksum University College of Health Science</option>
+                  <option >Ambo University Medical School</option>
+                  <option value="Arba Minch University">Arba Minch University College of Medicine and Health Sciences</option>
+                  <option >Arsi University College of Health Sciences</option>
+                  <option value="Bahir Dar University">Bahir Dar University College of Medicine and Health Sciences</option>
+                  <option value="Bethel Medical College">Bethel Medical College</option>
+                  <option value="Debre Berhan University">Debre Berhan University School of Health Science</option>
+                  <option >Debre Markos University School of Medicine</option>
+                  <option >Defense University College of Health Sciences</option>
+                  <option value="Dilla University">Dilla University School of Health and Medical Science</option>
+                  <option >Dire Dawa University School of Medicine</option>
+                  <option value="Ethiopian Catholic University">Ethiopian Catholic University of St. Thomas Aquinas (ECUSTA) School of Medicine/option>
+                  <option >Gamby College of Medical Science</option>
+                  <option value="Haramaya University">Haramaya University College of Health and Medical Sciences</option>
+                  <option value="Hawassa University">Hawassa University College of Medicine and Health Science</option>
+                  <option >Hayat Medical College</option>
+                  <option value="Jigjiga University">Jigjiga University College of Medicine and Health Science</option>
+                  <option value="Jimma University">Jimma University College of Public Health and Medical Sciences</option>
+                  <option >Madda Walabu University College of Medicine</option>
+                  <option >Mekelle University College of Health Sciences</option>
+                  <option value="Mizan-Tepi University">Mizan-Tepi University College of Health Science</option>
+                  <option >MyungSung Medical College</option>
+                  <option >Santé Medical College</option>
+                  <option >St. Paul's Hospital Millennium Medical College</option>
+                  <option value="University of Gondar">University of Gondar College of Medicine and Health Sciences</option>
+                  <option value="Wachemo University">Wachemo University College of Medicine and Health Sciences</option>
+                  <option value="Wolaita Sodo University">Wolaita Sodo University College of Health Sciences and Medicine</option>
+                  <option value="Wolkite University">Wolkite University College of Medicine and Health Sciences</option>
+                  <option value="Wollega University">Wollega University College of Medical and Health Sciences</option>
+                  <option value="Wollo University">Wollo University College of Medicine and Health Sciences</option>
+                  <option >Yekatit 12 Hospital Medical College</option>
+                  <option >Yirgalem Hospital Medical College</option>
+                  <option >Bulehora College of medical sciences </option>
+                  <option value="other">Other..</option>
+                </select>
+                
+
+
+<!-- change the context to select -->
+                <!-- {% if logedinMember %}
                 <input class="form-control" id="place_of_employmentinstitution" type="text" value={{logedinMember.place_of_employmentinstitution}} placeholder="Profession (Specialization)">
                 {% else %}
                 <input class="form-control" id="place_of_employmentinstitution" type="text" placeholder="please enter your  institution of employment">
-                {% endif %}
+                {% endif %} -->
+                <!--  -->
              </div>
+             <div class="form-group">
+              <label for="otherWork"></label>
+              <input class="form-control" id="otherWork" type="text"  placeholder="other work">
+            <!-- <input id="otherSpe" placeholder="other.." type="text"/> -->
+            
+           </div>
+             <div class="form-group">
+              <label for="employment_type">Type of employment </label>
+              <select class="form-control employment_type-select" id="employment_type">
+                <option>Public</option>
+                <option>Private</option>
+                <option>NGO</option>
+                <option>Academia</option>
+                <option>Honorable</option>
+               
+              </select>
+            </div>
                 <div class="form-group">
                   <label for="membership">Membership type *</label>
                   <select class="form-control membership-select" id="membership">
@@ -178,9 +280,10 @@ Intermediary bank account number: 70011228 -->
               
               <div class="detail-section medapay-hide">
                 <a id="details"></a>
+ 
                   <div class="form-group">
-                    <label for="age">Age</label>
-                    <input class="form-control" id="age" type="number"  placeholder="Age">
+                    <label for="date">Date</label>
+                    <input class="form-control" id="date" type="date"  >
                   </div>
                     <div class="header"><p>Additional Contact</p></div>
                    
@@ -232,8 +335,30 @@ Intermediary bank account number: 70011228 -->
                     <input type="file" class="form-control-file" id="Educational_Credentials">
                   </div>
                   <div>
+                    <div class="header"><p>Address field</p></div>
+                    <div class="row">
+                      <div class="col-sm-5">
+                          <div class="form-group">
+                              <label for="region">Region </label>
+                              <input id="region" type="text" name="region" class="form-control" placeholder="region"  >
+                          </div>
+                      </div>
+                      <div class="col-sm-5">
+                          <div class="form-group">
+                              <label for="city">City </label>
+                              <input id="city" type="text" name="city" class="form-control" placeholder="city">
+                          </div>
+                      </div>
+                      <div class="col-sm-2">
+                          <div class="form-group">
+                              <label for="pobox">PO box</label>
+                              <input id="pobox" type="text" name="pobox" class="form-control" placeholder="">
+                              <div class="help-block with-errors"></div>
+                          </div>
+                      </div>
+                  </div>
 
-                    <a href="#" type="button" class="saveUpdate">save Update</a>
+                    <a href="#" type="button" class="saveUpdate">Save Information</a>
                   </div>
 
 

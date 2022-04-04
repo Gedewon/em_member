@@ -1,4 +1,23 @@
-   //use Local storage 
+
+// document.querySelector('.logout').addEventListener('click',function(){
+//   console.log('logout')
+// })
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  //use Local storage 
    console.log(localStorage)
 
    function storageAvailable(type) {
@@ -92,7 +111,10 @@ function setStyles() {
 };
 
 (function(inputForms){ 
-  Object.values(inputForms).forEach(element => element.addEventListener('change',populateStorage))
+  Object.values(inputForms).forEach(element => {
+    if(element)
+    element.addEventListener('change',populateStorage)
+  })
 }
 )(inputForms);
   
