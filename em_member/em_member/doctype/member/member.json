@@ -31,6 +31,13 @@
   "column_break_21",
   "year_of_completion",
   "section_break_23",
+  "adress_field_section",
+  "region",
+  "column_break_27",
+  "city",
+  "column_break_29",
+  "po_box",
+  "section_break_31",
   "place_of_employmentinstitution",
   "other_work",
   "unemployedseeking_employment",
@@ -178,7 +185,7 @@
    "fieldname": "place_of_employmentinstitution",
    "fieldtype": "Select",
    "label": "Place of Employment/Institution",
-   "options": "Adama General Hospital and Medical College\nAdama Hospital Medical College\nAddis Ababa University\nAdigrat University\nAfrica Medical College\nAksum University College of Health Science\nAmbo University Medical School\nArba Minch University\nArsi University College of Health Sciences\nBahir Dar University\nBethel Medical College\nDebre Berhan University\nDebre Markos University School of Medicine\nDebre Tabor University\nDefense University College of Health Sciences\nDilla University\nDire Dawa University School of Medicine\nEthiopian Catholic University\nGamby College of Medical Science\nHaramaya University\nHawassa University\nHayat Medical College\nJigjiga University\nJimma University\nMadda Walabu University College of Medicine\nMekelle University College of Health Sciences\nMizan-Tepi University\nMyungSung Medical College\nSant\u00e9 Medical College\nSt. Paul's Hospital Millennium Medical College\nUniversity of Gondar\nWachemo University\nWolaita Sodo University\nWolkite University\nWollega University\nWollo University\nYekatit 12 Hospital Medical College\nYirgalem Hospital Medical College\nBulehora College of medical sciences\nOther"
+   "options": "Adama General Hospital and Medical College\nAdama Hospital Medical College\nAddis Ababa University\nAdigrat University\nAfrica Medical College\nAksum University College of Health Science\nAmbo University Medical School\nArba Minch University\nArsi University College of Health Sciences\nBahir Dar University\nBethel Medical College\nDebre Berhan University\nDebre Markos University School of Medicine\nDebre Tabor University\nDefense University College of Health Sciences\nDilla University\nDire Dawa University School of Medicine\nEthiopian Catholic University\nGamby College of Medical Science\nHaramaya University\nHawassa University\nHayat Medical College\nJigjiga University\nJimma University\nMadda Walabu University College of Medicine\nMekelle University College of Health Sciences\nMizan-Tepi University\nMyungSung Medical College\nSant\u00e9 Medical College\nSt. Paul's Hospital Millennium Medical College\nUniversity of Gondar\nWachemo University\nWolaita Sodo University\nWolkite University\nWollega University\nWollo University\nYekatit 12 Hospital Medical College\nYirgalem Hospital Medical College\nBulehora College of medical sciences\nother"
   },
   {
    "default": "0",
@@ -266,13 +273,45 @@
    "fieldname": "other_work",
    "fieldtype": "Data",
    "label": "Other work"
+  },
+  {
+   "fieldname": "adress_field_section",
+   "fieldtype": "Section Break",
+   "label": "Adress Field"
+  },
+  {
+   "fieldname": "region",
+   "fieldtype": "Data",
+   "label": "region"
+  },
+  {
+   "fieldname": "column_break_27",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "city",
+   "fieldtype": "Data",
+   "label": "city"
+  },
+  {
+   "fieldname": "column_break_29",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "po_box",
+   "fieldtype": "Data",
+   "label": "PO box"
+  },
+  {
+   "fieldname": "section_break_31",
+   "fieldtype": "Section Break"
   }
  ],
  "has_web_view": 1,
  "index_web_pages_for_search": 1,
  "is_published_field": "published",
  "links": [],
- "modified": "2022-04-04 11:51:17.105837",
+ "modified": "2022-04-06 10:44:46.439301",
  "modified_by": "Administrator",
  "module": "Em Member",
  "name": "Member",
@@ -288,6 +327,18 @@
    "read": 1,
    "report": 1,
    "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Guest",
    "share": 1,
    "write": 1
   }

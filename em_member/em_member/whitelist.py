@@ -212,6 +212,26 @@ def sendReceipt():
     		ignore_mandatory=True # insert even if mandatory fields are not set
 			)
 	
+@frappe.whitelist(allow_guest=True)
+def saveAdditional(self,args):
+	input =json.loads(args)
+	print("-------------------------from backend--------------------------------")
+	print(input)
+	email =frappe.session.user
+	isAle = frappe.db.exists('Member',email)
+	if isAle:
+		frappe.db.set_value('Member', email, {
+			'name_2':input['additionalFullname'],
+			'email_2':input['additionalEmail'],
+			'phone_2':input['additionalPhone'],
+			'institution':input['Institution'],
+			'undergrade_contactuate':input['UndergradeContactuate'],
+			'year_of_completion':input['Yearofcompletion'],
+			'region':input['region'],
+			'city':input['city'],
+			'po_box':input['pobox'],
+			'date_of_birth':input['date'],
+			})
 
 
 @frappe.whitelist(allow_guest=True)
@@ -234,7 +254,9 @@ def saveUsers(self,args):
 			'place_of_employmentinstitution':input['place_of_employmentinstitution'],
 			'membership_type':input['membership'],
 			'membership_fee_amount':input['feeamount'],
-			'generate_payment_reference':input['reference']
+			'generate_payment_reference':input['reference'],
+			'other_specialization':input['otherspc'],
+			'other_work':input['otherWork']
 			})
 	else:
 		doc = frappe.new_doc('Member')
