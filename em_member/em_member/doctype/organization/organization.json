@@ -1,19 +1,30 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "field:name1",
+ "autoname": "field:email",
  "creation": "2021-12-29 04:37:22.603735",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
   "name1",
+  "email",
   "industry",
   "head_office_location",
+  "region",
+  "column_break_5",
+  "city",
+  "section_break_7",
   "phone_number",
   "other_locations",
+  "region_2",
+  "column_break_11",
+  "city_2",
+  "section_break_13",
+  "phone_number_2",
   "website",
-  "organization_member"
+  "organization_member",
+  "organization_status"
  ],
  "fields": [
   {
@@ -31,7 +42,7 @@
   },
   {
    "fieldname": "head_office_location",
-   "fieldtype": "Data",
+   "fieldtype": "Section Break",
    "label": "Head office location"
   },
   {
@@ -41,7 +52,7 @@
   },
   {
    "fieldname": "other_locations",
-   "fieldtype": "Data",
+   "fieldtype": "Section Break",
    "label": "Other locations"
   },
   {
@@ -54,11 +65,65 @@
    "fieldtype": "Link",
    "label": "Organization Member",
    "options": "Organization Member"
+  },
+  {
+   "fieldname": "region",
+   "fieldtype": "Select",
+   "label": "Region",
+   "options": "Addis Ababa\nAfar\nAmhara\nBenishangul-Gumuz\nDire Dawa\nGambela\nHarari\nOromia\nSomali\nTigray\nSNNPR\nSidama\nSWEPR"
+  },
+  {
+   "fieldname": "column_break_5",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "city",
+   "fieldtype": "Data",
+   "label": "City "
+  },
+  {
+   "fieldname": "section_break_7",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "region_2",
+   "fieldtype": "Select",
+   "label": "Region",
+   "options": "Addis Ababa\nAfar\nAmhara\nBenishangul-Gumuz\nDire Dawa\nGambela\nHarari\nOromia\nSomali\nTigray\nSNNPR\nSidama\nSWEPR"
+  },
+  {
+   "fieldname": "column_break_11",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "city_2",
+   "fieldtype": "Data",
+   "label": "City"
+  },
+  {
+   "fieldname": "section_break_13",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "phone_number_2",
+   "fieldtype": "Int",
+   "label": "Phone number"
+  },
+  {
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "label": "email",
+   "unique": 1
+  },
+  {
+   "fieldname": "organization_status",
+   "fieldtype": "Data",
+   "label": "organization_status"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-12-29 05:31:21.611997",
+ "modified": "2022-04-07 16:53:09.785301",
  "modified_by": "Administrator",
  "module": "Em Member",
  "name": "Organization",
@@ -74,6 +139,18 @@
    "read": 1,
    "report": 1,
    "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Guest",
    "share": 1,
    "write": 1
   }

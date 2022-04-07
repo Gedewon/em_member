@@ -350,7 +350,8 @@ selectElement.addEventListener('change', (event) => {
         membership_type: membership_type,
         amount: amount,
         full_name: full_name,
-        phone_number: phone_number
+        phone_number: phone_number,
+        redirect: 'Membership'
       }
     },
     btn: $('.paywithmeda'),

@@ -13,10 +13,17 @@
           <h1>Ethiopian Medical Association
           </h1>
           <h2>Dependable physicians for better health</h2>
-          <div class="d-flex">
+          <div class="d-flex gap-3">
             {% if logedinMember %}
             {% else %}
-            <a href="/Membership" class="btn-get-started scrollto">Register</a>
+            <div>
+
+              <a href="/Membership" class="btn-get-started scrollto">Register as a Member</a>
+            </div>
+           <div>
+
+             <a href="/organizationMember" class="btn-get-started scrollto">Register as an Organization</a>
+           </div>
             {% endif %}
             <a href="https://www.youtube.com/watch?v=TKxXi29cKPk" class="glightbox btn-watch-video"><i class="bi bi-play-circle"></i><span>Watch Video</span></a>
           </div>
@@ -109,7 +116,11 @@
         </div>
         {% else %}
         <div class="updateprofile">
-          <a href="/Membership" class="btn-get-started scrollto">Register</a>
+          <a href="/Membership" class="btn-get-started scrollto">Register as a Member</a>
+        </div><br/>
+        <div class="updateprofile">
+
+          <a href="/Organization" class="btn-get-started scrollto">Register as an Organization</a>
         </div>
         {% endif %}
       </div>
@@ -121,8 +132,10 @@
       <div class="container">
         <div class="row counters">
           <div class="col-12 text-center">
-        {{membershipStatus}}
-       
+            {% if logedinMember %}
+          {{membershipStatus}}
+           {% else %}
+           {% endif %}
         </div>
         </div>
         </div>

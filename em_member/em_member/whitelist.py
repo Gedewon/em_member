@@ -126,7 +126,7 @@ def paywithMeda(self,args):
 	print(input)
 	print(type(input['phone_number']))
 	url ='https://api.pay.meda.chat/api/bills/'
-	payload={"purchaseDetails":{"orderId": "100","description": 'Paying for'+input["membership_type"]+'membership',"amount": int(input['amount']),"customerName": input['full_name'],"customerPhoneNumber" : '+'+str(input['phone_number'])},"redirectUrls": {"returnUrl": "http://ema.test:8001/Membership","cancelUrl": "http://ema.test:8001/","callbackUrl": ""}}
+	payload={"purchaseDetails":{"orderId": "100","description": 'Paying for'+input["membership_type"]+'membership',"amount": int(input['amount']),"customerName": input['full_name'],"customerPhoneNumber" : '+'+str(input['phone_number'])},"redirectUrls": {"returnUrl": "http://ema.test:8001/","cancelUrl": "http://ema.test:8001/"+input['redirect'],"callbackUrl": ""}}
 	print(payload)
 	response = requests.post(url,
 		headers={
@@ -150,6 +150,44 @@ def paywithMeda(self,args):
 	print(response.json())
 	return response.json()
 	# body ={
+
+
+# save and update organization
+@frappe.whitelist(allow_guest=True)
+def saveAndUpdateOrganization(req):
+	input = json.loads(req)
+	print(input)
+	refNo=input['data']['referenceNumber']
+	email = frappe.session.user
+	frappe.db.set_value('Organization',email,{
+		'organization_status':input['status']
+	})
+	isAle = frappe.db.exists('Payment',refNo)
+	if isAle:
+		frappe.db.set_value('Payment', refNo, {
+			'reference':input['data']['referenceNumber'],
+			'payment_status':input['data']['status'],
+			'payment_method':input['data']['paymentMethod'],
+			'member_status':input['data']['status'],
+			})
+	else:
+		doc = frappe.new_doc('Payment')
+		doc.reference=input['data']['referenceNumber']
+		doc.payment_status=input['data']['status']
+		doc.payment_method=input['data']['paymentMethod']
+		doc.member_status=input['data']['status']
+		doc.date = datetime.today().strftime("%d-%m-%Y")
+		doc.email = email
+		doc.insert(
+				ignore_permissions=True, # ignore write permissions during insert
+				ignore_links=True, # ignore Link validation in the document
+				ignore_if_duplicate=True, # dont insert if DuplicateEntryError is thrown
+				ignore_mandatory=True # insert even if mandatory fields are not set
+				)
+
+
+
+
 @frappe.whitelist(allow_guest=True)
 def updateStatus(req):
 	input = json.loads(req)
@@ -233,6 +271,30 @@ def saveAdditional(self,args):
 			'date_of_birth':input['date'],
 			})
 
+@frappe.whitelist(allow_guest=True)
+def saveOrganization(self,args):
+	input =json.loads(args)
+	print("-------------------------from backend--------------------------------")
+	print(input)
+	email =frappe.session.user
+	doc = frappe.new_doc('Organization')
+	doc.name1=input['Name']
+	doc.email=input['email']
+	doc.industry=input['Industry']
+	doc.region=input['Region']
+	# doc.picture=input['image']
+	doc.city=input['City']
+	doc.phone_number=input['PhoneNumber']
+	doc.region_2=input['RegionTwo']
+	doc.city_2=input['CityTwo']
+	doc.phone_number_2=input['PhoneNumberTwo']
+	doc.website=input['website']
+	doc.insert(
+   			ignore_permissions=True, # ignore write permissions during insert
+    		ignore_links=True, # ignore Link validation in the document
+    		ignore_if_duplicate=True, # dont insert if DuplicateEntryError is thrown
+    		ignore_mandatory=True # insert even if mandatory fields are not set
+			)
 
 @frappe.whitelist(allow_guest=True)
 def saveUsers(self,args):

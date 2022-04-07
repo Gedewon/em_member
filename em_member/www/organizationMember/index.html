@@ -1,0 +1,169 @@
+{% extends 'templates/landingpage_base.html'%}
+
+{% block content %}
+<main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>Organization Profile </h2>
+          <ol>
+            <li><a href="index.html">Home</a></li>
+            <li>Organization Profile</li>
+          </ol>
+        </div>
+        
+      </div>
+    </section><!-- End Breadcrumbs -->
+
+    <!-- ======= Portfolio Details Section ======= -->
+    <section id="portfolio-details" class="portfolio-details">
+      <div class="container">
+
+        <div class="row gy-4">
+
+          <div class="col-lg-8">
+            <div class="portfolio-details-slider swiper">
+              <!-- here came the custom webform  -->
+              <form>
+                <div class="form-group">
+                  <label for="OrganizationName">Name of Organization</label>
+                  <input class="form-control" id="OrganizationName" type="text"  placeholder="Organization Name">
+               </div>
+               <div class="form-group">
+                <label for="OrganizationEmail">Email of Organization</label>
+                <input class="form-control" id="OrganizationEmail" type="email"  placeholder="Organization Name">
+             </div>
+               <div class="form-group">
+                <label for="industory">Industry</label>
+                <input class="form-control" id="industory" type="text"  placeholder="Industry Name">
+             </div>
+             <div class="form-group">
+              <label for="headoffice"><h2>Head Office Location</h2></label>
+              <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="region">Region</label>
+                        <select class="form-control" id="region">
+                          <!-- Prefix cannot be "('Prof',)". It should be one of "Dr", "Prof", "Mr", "Mrs", "Ms" -->
+                          <option>Addis Ababa</option>
+                          <option>Afar</option>
+                          <option>Amhara</option>
+                          <option>Benishangul-Gumuz</option>
+                          <option>Dire Dawa</option>
+                          <option>Gambela</option>
+                          <option>Harari</option>
+                          <option>Oromia</option>
+                          <option>Somali</option>
+                          <option>Tigray</option>
+                          <option>SNNPR</option>
+                          <option>Sidama</option>
+                          <option>SWEPR</option>
+                          
+                         </select>
+                      </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="city">City</label>
+                        <input id="city" type="text" name="city" class="form-control" placeholder="city">
+                    </div>
+                </div>
+            </div>
+            </div>
+            <div class="form-group">
+              <label for="phone_number">Phone Number *</label>
+              <input type="number" class="form-control" id="phone_number" placeholder="09********">
+            </div>
+             
+            <div class="form-group">
+              <label for="headoffice2"><h2>Other Location</h2></label>
+              <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="region2">Region</label>
+                        <select class="form-control" id="region2">
+                          <!-- Prefix cannot be "('Prof',)". It should be one of "Dr", "Prof", "Mr", "Mrs", "Ms" -->
+                          <option>Addis Ababa</option>
+                          <option>Afar</option>
+                          <option>Amhara</option>
+                          <option>Benishangul-Gumuz</option>
+                          <option>Dire Dawa</option>
+                          <option>Gambela</option>
+                          <option>Harari</option>
+                          <option>Oromia</option>
+                          <option>Somali</option>
+                          <option>Tigray</option>
+                          <option>SNNPR</option>
+                          <option>Sidama</option>
+                          <option>SWEPR</option>
+                          
+                         </select>
+                      </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="city2">City</label>
+                        <input id="city2" type="text" name="city2" class="form-control" placeholder="city">
+                    </div>
+                </div>
+            </div>
+            </div>
+            <div class="form-group">
+              <label for="phone_number2">Phone Number *</label>
+              <input type="number" class="form-control" id="phone_number2" placeholder="09********">
+            </div>
+              
+             
+                <div class="form-group">
+                  <label for="website"></label>
+                  <input class="form-control " id="website" type="text"  placeholder="Website">
+               
+               </div>
+               <div class="form-group">
+                <label for="Membershiptype">Membership Type</label>
+                <select class="form-control" id="Membershiptype">
+                  <option>None</option>
+                  <option>Corporate</option>
+                 </select>
+               </div>
+               <div class="form-group">
+                <label for="Membershipfee"></label>
+                <input class="form-control medapay-hide" id="Membershipfee" type="text"  readonly>
+               </div>
+               <div class="withmeda medapay-hide">
+                <div class="form-group">
+                  <label for="reference">Generate Payment reference</label>
+                 
+                  <input class="form-control" id="reference" type="text" placeholder="Readonly input here…" readonly>
+                </div>
+                
+              </div>
+               <div>
+
+                <a href="#" type="button"  class="paywithmeda medapay-hide paywithmedaOrganization"  >Pay with MedaPay</a>
+              </div>
+
+             </div>
+            
+         
+              </form>
+
+
+      
+            </div>
+          </div>
+
+        
+
+        </div>
+
+      </div>
+    </section><!-- End Portfolio Details Section -->
+
+  </main><!-- End #main -->
+  
+  <!-- <script>  </script> -->
+{% endblock %}
