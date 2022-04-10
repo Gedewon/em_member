@@ -256,21 +256,21 @@ displayOther('.place_of_employmentinstitution-select', "#otherWork");
 
 
 // fill detail 
-document.querySelector('.filldetail').addEventListener('click', event => {
-  let detail = document.querySelector(".detail-section");
+// document.querySelector('.filldetail').addEventListener('click', event => {
+//   let detail = document.querySelector(".detail-section");
 
-  if (detail.classList.contains('medapay-hide')) {
+//   if (detail.classList.contains('medapay-hide')) {
 
-    detail.classList.add("medapay-show");
-    detail.classList.remove("medapay-hide");
+//     detail.classList.add("medapay-show");
+//     detail.classList.remove("medapay-hide");
 
-  } else {
+//   } else {
 
-    detail.classList.add("medapay-hide");
-    detail.classList.remove("medapay-show");
+//     detail.classList.add("medapay-hide");
+//     detail.classList.remove("medapay-show");
 
-  }
-});
+//   }
+// });
 
 
 
