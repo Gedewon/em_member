@@ -362,10 +362,24 @@ selectElement.addEventListener('change', (event) => {
       billReference = r.message.billReferenceNumber;
       document.querySelector('#reference').value = billReference;
       billLink = r.message.link.href;
+      console.log(billLink);
+      console.log(document.querySelector('.paywithmeda'),'there is element tho');
       document.querySelector('.paywithmeda').href = billLink;
 
       //run the callback function here 
+      
+      //  send email automatically 
+      // frappe.call({
+      //   method:'em_member.em_member.whitelist.send_email',
+      //   callback:(r)=>{
+      //     console.log('email send successfully:)',r)
+      //   },
+      //   error:(r)=>{
+      //     console.log('email error:)',r)
 
+      //   }
+      // })
+       
       /*
 GET https://api.sandboax.pay.meda.chat/v1/bills/1000000
   */

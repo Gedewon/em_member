@@ -2,6 +2,7 @@
 # import frappe
 from copyreg import constructor
 from email import header
+import email
 from logging.config import valid_ident
 import profile
 from typing_extensions import Self
@@ -126,7 +127,7 @@ def paywithMeda(self,args):
 	print(input)
 	print(type(input['phone_number']))
 	url ='https://api.pay.meda.chat/api/bills/'
-	payload={"purchaseDetails":{"orderId": "100","description": 'Paying for'+input["membership_type"]+'membership',"amount": int(input['amount']),"customerName": input['full_name'],"customerPhoneNumber" : '+'+str(input['phone_number'])},"redirectUrls": {"returnUrl": "http://ema.test:8001/","cancelUrl": "http://ema.test:8001/"+input['redirect'],"callbackUrl": ""}}
+	payload={"purchaseDetails":{"orderId": "100","description": 'Paying for'+input["membership_type"]+'membership',"amount": int(input['amount']),"customerName": input['full_name'],"customerPhoneNumber" : '+'+str(input['phone_number'])},"redirectUrls": {"returnUrl": "https://18.193.100.79/","cancelUrl": "https://18.193.100.79/"+input['redirect'],"callbackUrl": ""}}
 	print(payload)
 	response = requests.post(url,
 		headers={
@@ -375,3 +376,11 @@ def attachImage(self,args):
 		frappe.db.set_value('Receipt', email, {
 				'recepit':input['url']
 				})
+
+@frappe.whitelist(allow_guest=True)
+def send_email():
+	email =frappe.session.user
+	frappe.sendmail(recipients=email,
+		subject="test email",
+		message="it works ha"
+	)
